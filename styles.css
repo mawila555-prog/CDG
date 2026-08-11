@@ -1,6 +1,6 @@
 /* =========================================================
    CREATIVE DEVELOPMENT GROUP
-   Main Website Styles
+   COMPLETE WEBSITE STYLES
 ========================================================= */
 
 
@@ -45,11 +45,9 @@
     box-sizing: border-box;
 }
 
-
 html {
     scroll-behavior: smooth;
 }
-
 
 body {
     font-family: "Inter", Arial, sans-serif;
@@ -58,18 +56,15 @@ body {
     line-height: 1.6;
 }
 
-
 img {
     max-width: 100%;
     display: block;
 }
 
-
 a {
     color: inherit;
     text-decoration: none;
 }
-
 
 button,
 input,
@@ -78,11 +73,9 @@ select {
     font-family: inherit;
 }
 
-
 button {
     cursor: pointer;
 }
-
 
 .container {
     width: min(92%, var(--container));
@@ -91,13 +84,15 @@ button {
 
 
 /* =========================================================
-   HEADER / NAVIGATION
+   HEADER
 ========================================================= */
 
 .site-header {
     position: sticky;
     top: 0;
     z-index: 1000;
+
+    height: 70px;
 
     background: rgba(255, 255, 255, 0.98);
 
@@ -107,9 +102,8 @@ button {
         0 2px 12px rgba(0, 0, 0, 0.05);
 }
 
-
 .nav-container {
-    min-height: 68px;
+    height: 70px;
 
     display: flex;
     align-items: center;
@@ -120,43 +114,50 @@ button {
 
 
 /* =========================================================
-   ACTUAL COMPANY LOGO
+   COMPANY LOGO
+   CDG.jpg contains white space around the actual logo.
+   These settings zoom and reposition the JPEG.
 ========================================================= */
 
 .logo {
+    position: relative;
+
+    width: 330px;
+    height: 70px;
+
     display: flex;
     align-items: center;
-
-    width: 275px;
-    height: 65px;
 
     overflow: hidden;
 
     flex-shrink: 0;
 }
 
-
 .company-logo {
-    width: 275px;
-    height: 65px;
+    position: absolute;
+
+    width: 500px;
+    height: 465px;
+
+    max-width: none;
 
     object-fit: contain;
-    object-position: center;
 
-    display: block;
+    left: -85px;
+    top: -195px;
 }
 
 
 /* =========================================================
-   NAVIGATION LINKS
+   NAVIGATION
 ========================================================= */
 
 .nav {
     display: flex;
     align-items: center;
+
     gap: 28px;
 }
-
 
 .nav a {
     position: relative;
@@ -168,7 +169,6 @@ button {
 
     transition: var(--transition);
 }
-
 
 .nav a:not(.nav-quote)::after {
     content: "";
@@ -186,16 +186,13 @@ button {
     transition: var(--transition);
 }
 
-
 .nav a:not(.nav-quote):hover {
     color: var(--red);
 }
 
-
 .nav a:not(.nav-quote):hover::after {
     width: 100%;
 }
-
 
 .nav-quote {
     padding: 12px 18px;
@@ -207,16 +204,19 @@ button {
     border-radius: 3px;
 
     font-size: 11px !important;
-}
 
+    transition: var(--transition);
+}
 
 .nav-quote:hover {
     background: var(--red-dark);
+
+    transform: translateY(-1px);
 }
 
 
 /* =========================================================
-   MOBILE MENU BUTTON
+   MOBILE MENU
 ========================================================= */
 
 .menu-toggle {
@@ -256,7 +256,6 @@ button {
     padding: 65px 0;
 }
 
-
 .hero-grid {
     display: grid;
 
@@ -295,7 +294,7 @@ button {
 
 
 /* =========================================================
-   HERO HEADING
+   HERO TITLE
 ========================================================= */
 
 .hero h1 {
@@ -318,7 +317,6 @@ button {
     text-transform: uppercase;
 }
 
-
 .hero h1 em {
     color: var(--red-light);
 
@@ -326,12 +324,17 @@ button {
 }
 
 
+/* =========================================================
+   HERO DESCRIPTION
+========================================================= */
+
 .hero-description {
     max-width: 520px;
 
     margin-bottom: 25px;
 
-    color: rgba(255, 255, 255, 0.9);
+    color:
+        rgba(255, 255, 255, 0.9);
 
     font-size: 14px;
 
@@ -340,7 +343,7 @@ button {
 
 
 /* =========================================================
-   HERO BUTTONS
+   BUTTONS
 ========================================================= */
 
 .hero-buttons {
@@ -352,7 +355,6 @@ button {
 
     flex-wrap: wrap;
 }
-
 
 .btn {
     display: inline-flex;
@@ -379,13 +381,11 @@ button {
     transition: var(--transition);
 }
 
-
 .btn-primary {
     background: var(--red);
 
     color: var(--white);
 }
-
 
 .btn-primary:hover {
     background: var(--red-light);
@@ -393,9 +393,9 @@ button {
     transform: translateY(-2px);
 
     box-shadow:
-        0 7px 18px rgba(217, 4, 41, 0.25);
+        0 7px 18px
+        rgba(217, 4, 41, 0.25);
 }
-
 
 .btn-outline {
     background: transparent;
@@ -405,7 +405,6 @@ button {
 
     color: var(--white);
 }
-
 
 .btn-outline:hover {
     background: var(--white);
@@ -432,9 +431,9 @@ button {
     border-radius: 5px;
 
     box-shadow:
-        0 18px 45px rgba(0, 0, 0, 0.18);
+        0 18px 45px
+        rgba(0, 0, 0, 0.18);
 }
-
 
 .hero-card h3 {
     margin-bottom: 7px;
@@ -448,7 +447,6 @@ button {
     font-weight: 800;
 }
 
-
 .hero-card > p {
     margin-bottom: 15px;
 
@@ -459,15 +457,14 @@ button {
     line-height: 1.5;
 }
 
-
 .hero-services {
     display: grid;
 
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns:
+        1fr 1fr;
 
     gap: 7px 9px;
 }
-
 
 .hero-services span {
     display: flex;
@@ -491,13 +488,12 @@ button {
 
 
 /* =========================================================
-   GENERAL SECTION
+   GENERAL SECTIONS
 ========================================================= */
 
 .section {
     padding: 90px 0;
 }
-
 
 .section-light {
     background: var(--off-white);
@@ -514,7 +510,6 @@ button {
     margin-bottom: 45px;
 }
 
-
 .eyebrow {
     margin-bottom: 10px;
 
@@ -528,7 +523,6 @@ button {
 
     text-transform: uppercase;
 }
-
 
 .section-heading h2 {
     margin-bottom: 13px;
@@ -550,11 +544,9 @@ button {
     text-transform: uppercase;
 }
 
-
 .section-heading h2 span {
     color: var(--red);
 }
-
 
 .section-heading p {
     color: var(--grey);
@@ -579,18 +571,15 @@ button {
     align-items: stretch;
 }
 
-
 .about-text {
     color: #4e5963;
 
     font-size: 14px;
 }
 
-
 .about-text p {
     margin-bottom: 18px;
 }
-
 
 .about-text .large {
     color: var(--dark);
@@ -601,7 +590,6 @@ button {
 
     font-weight: 500;
 }
-
 
 .about-card {
     padding: 35px;
@@ -622,7 +610,6 @@ button {
     border-top: 4px solid var(--red);
 }
 
-
 .about-card h3 {
     margin-bottom: 15px;
 
@@ -633,9 +620,9 @@ button {
     line-height: 1.2;
 }
 
-
 .about-card p {
-    color: rgba(255, 255, 255, 0.82);
+    color:
+        rgba(255, 255, 255, 0.82);
 
     font-size: 13px;
 }
@@ -654,7 +641,6 @@ button {
     gap: 20px;
 }
 
-
 .service-card {
     position: relative;
 
@@ -671,7 +657,6 @@ button {
     transition: var(--transition);
 }
 
-
 .service-card:hover {
     transform: translateY(-5px);
 
@@ -679,7 +664,6 @@ button {
 
     box-shadow: var(--shadow);
 }
-
 
 .service-number {
     position: absolute;
@@ -693,7 +677,6 @@ button {
 
     font-weight: 900;
 }
-
 
 .service-icon {
     width: 45px;
@@ -713,7 +696,6 @@ button {
     font-size: 19px;
 }
 
-
 .service-card h3 {
     margin-bottom: 10px;
 
@@ -725,7 +707,6 @@ button {
 
     line-height: 1.3;
 }
-
 
 .service-card p {
     color: var(--grey);
@@ -749,7 +730,6 @@ button {
     gap: 20px;
 }
 
-
 .feature {
     padding: 25px;
 
@@ -757,7 +737,6 @@ button {
 
     background: var(--off-white);
 }
-
 
 .feature-icon {
     margin-bottom: 12px;
@@ -769,7 +748,6 @@ button {
     font-weight: 900;
 }
 
-
 .feature h3 {
     margin-bottom: 7px;
 
@@ -779,7 +757,6 @@ button {
 
     font-size: 16px;
 }
-
 
 .feature p {
     color: var(--grey);
@@ -807,7 +784,6 @@ button {
     text-align: center;
 }
 
-
 .quote-section h2 {
     margin-bottom: 10px;
 
@@ -822,24 +798,22 @@ button {
     font-weight: 900;
 }
 
-
 .quote-section p {
     max-width: 650px;
 
     margin: 0 auto 25px;
 
-    color: rgba(255, 255, 255, 0.9);
+    color:
+        rgba(255, 255, 255, 0.9);
 
     font-size: 14px;
 }
-
 
 .quote-section .btn {
     background: var(--white);
 
     color: var(--red);
 }
-
 
 .quote-section .btn:hover {
     background: var(--navy);
@@ -866,7 +840,6 @@ button {
     align-items: start;
 }
 
-
 .contact-card {
     padding: 30px;
 
@@ -884,7 +857,6 @@ button {
     border-top: 4px solid var(--red);
 }
 
-
 .contact-card h3 {
     margin-bottom: 25px;
 
@@ -892,7 +864,6 @@ button {
 
     font-size: 23px;
 }
-
 
 .contact-item {
     display: flex;
@@ -908,11 +879,9 @@ button {
         rgba(255, 255, 255, 0.12);
 }
 
-
 .contact-item:last-child {
     border-bottom: none;
 }
-
 
 .contact-icon {
     width: 40px;
@@ -931,11 +900,10 @@ button {
 
     color: var(--white);
 
-    font-size: 14px;
+    font-size: 13px;
 
     font-weight: 800;
 }
-
 
 .contact-item span {
     display: block;
@@ -951,7 +919,6 @@ button {
 
     letter-spacing: 1px;
 }
-
 
 .contact-item strong {
     display: block;
@@ -974,7 +941,6 @@ button {
     gap: 18px;
 }
 
-
 .contact-form label {
     display: flex;
 
@@ -990,7 +956,6 @@ button {
 
     text-transform: uppercase;
 }
-
 
 .contact-form input,
 .contact-form select,
@@ -1014,7 +979,6 @@ button {
     transition: var(--transition);
 }
 
-
 .contact-form input:focus,
 .contact-form select:focus,
 .contact-form textarea:focus {
@@ -1025,13 +989,11 @@ button {
         rgba(217, 4, 41, 0.08);
 }
 
-
 .contact-form textarea {
     resize: vertical;
 
     min-height: 130px;
 }
-
 
 .contact-form button {
     align-self: flex-start;
@@ -1052,7 +1014,6 @@ footer {
     color: var(--white);
 }
 
-
 .footer-main {
     display: flex;
 
@@ -1069,7 +1030,6 @@ footer {
         rgba(255, 255, 255, 0.12);
 }
 
-
 .footer-brand h3 {
     margin-bottom: 5px;
 
@@ -1078,14 +1038,12 @@ footer {
     font-size: 19px;
 }
 
-
 .footer-brand p {
     color:
         rgba(255, 255, 255, 0.65);
 
     font-size: 11px;
 }
-
 
 .footer-brand p:last-child {
     margin-top: 8px;
@@ -1095,7 +1053,6 @@ footer {
     font-weight: 700;
 }
 
-
 .footer-links {
     display: flex;
 
@@ -1103,7 +1060,6 @@ footer {
 
     gap: 20px;
 }
-
 
 .footer-links a {
     color:
@@ -1116,11 +1072,9 @@ footer {
     transition: var(--transition);
 }
 
-
 .footer-links a:hover {
     color: var(--red-light);
 }
-
 
 .footer-bottom {
     display: flex;
@@ -1143,7 +1097,7 @@ footer {
 
 
 /* =========================================================
-   ANIMATIONS
+   ANIMATION
 ========================================================= */
 
 @keyframes fadeUp {
@@ -1160,7 +1114,6 @@ footer {
 
 }
 
-
 .hero > .container {
     animation:
         fadeUp 0.7s ease both;
@@ -1171,50 +1124,58 @@ footer {
    TABLET
 ========================================================= */
 
-@media (max-width: 900px) {
-
-    .nav-container {
-        min-height: 65px;
-    }
-
+@media (max-width: 1100px) {
 
     .logo {
-        width: 230px;
-        height: 58px;
+        width: 290px;
     }
-
 
     .company-logo {
-        width: 230px;
-        height: 58px;
-    }
+        width: 450px;
+        height: 420px;
 
+        left: -75px;
+        top: -175px;
+    }
 
     .nav {
-        gap: 15px;
+        gap: 18px;
     }
-
 
     .nav a {
         font-size: 10px;
     }
 
+}
 
-    .nav-quote {
-        padding: 10px 12px;
+
+/* =========================================================
+   TABLET / SMALL LAPTOP
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .logo {
+        width: 250px;
+        height: 65px;
     }
 
+    .company-logo {
+        width: 410px;
+        height: 380px;
+
+        left: -70px;
+        top: -160px;
+    }
 
     .hero-grid {
         gap: 35px;
     }
 
-
     .service-grid {
         grid-template-columns:
             repeat(2, 1fr);
     }
-
 
     .features {
         grid-template-columns:
@@ -1230,27 +1191,44 @@ footer {
 
 @media (max-width: 700px) {
 
-    .nav-container {
-        min-height: 65px;
+    .site-header {
+        height: 65px;
     }
 
+    .nav-container {
+        height: 65px;
+    }
+
+
+    /* Mobile logo */
 
     .logo {
-        width: 210px;
-        height: 55px;
-    }
+        position: relative;
 
+        width: 220px;
+        height: 58px;
+
+        overflow: hidden;
+    }
 
     .company-logo {
-        width: 210px;
-        height: 55px;
+        position: absolute;
+
+        width: 350px;
+        height: 325px;
+
+        max-width: none;
+
+        left: -60px;
+        top: -135px;
     }
 
+
+    /* Mobile menu */
 
     .menu-toggle {
         display: block;
     }
-
 
     .nav {
         position: absolute;
@@ -1280,11 +1258,9 @@ footer {
             rgba(0, 0, 0, 0.08);
     }
 
-
     .nav.active {
         display: flex;
     }
-
 
     .nav a {
         padding: 13px 5px;
@@ -1296,11 +1272,9 @@ footer {
             #f0f1f2;
     }
 
-
     .nav a::after {
         display: none !important;
     }
-
 
     .nav-quote {
         margin-top: 10px;
@@ -1311,19 +1285,19 @@ footer {
     }
 
 
+    /* Hero */
+
     .hero {
         min-height: auto;
 
         padding: 65px 0;
     }
 
-
     .hero-grid {
         grid-template-columns: 1fr;
 
         gap: 40px;
     }
-
 
     .hero h1 {
         font-size: clamp(
@@ -1335,11 +1309,9 @@ footer {
         letter-spacing: -1.5px;
     }
 
-
     .hero-description {
         font-size: 13px;
     }
-
 
     .hero-buttons {
         flex-direction: column;
@@ -1347,26 +1319,27 @@ footer {
         align-items: stretch;
     }
 
-
     .hero-buttons .btn {
         width: 100%;
     }
-
 
     .hero-card {
         padding: 22px;
     }
 
 
+    /* Sections */
+
     .section {
         padding: 65px 0;
     }
-
 
     .section-heading {
         margin-bottom: 32px;
     }
 
+
+    /* About */
 
     .about-grid {
         grid-template-columns: 1fr;
@@ -1375,15 +1348,21 @@ footer {
     }
 
 
+    /* Services */
+
     .service-grid {
         grid-template-columns: 1fr;
     }
 
 
+    /* Features */
+
     .features {
         grid-template-columns: 1fr;
     }
 
+
+    /* Contact */
 
     .contact-grid {
         grid-template-columns: 1fr;
@@ -1391,16 +1370,16 @@ footer {
         gap: 30px;
     }
 
-
     .contact-form button {
         width: 100%;
     }
 
 
+    /* Footer */
+
     .footer-main {
         flex-direction: column;
     }
-
 
     .footer-bottom {
         flex-direction: column;
@@ -1418,36 +1397,33 @@ footer {
 @media (max-width: 420px) {
 
     .logo {
-        width: 185px;
-        height: 52px;
+        width: 190px;
+        height: 55px;
     }
-
 
     .company-logo {
-        width: 185px;
-        height: 52px;
-    }
+        width: 315px;
+        height: 295px;
 
+        left: -55px;
+        top: -122px;
+    }
 
     .hero h1 {
         font-size: 42px;
     }
 
-
     .hero-services {
         grid-template-columns: 1fr;
     }
-
 
     .section-heading h2 {
         font-size: 30px;
     }
 
-
     .about-card {
         padding: 25px;
     }
-
 
     .contact-card {
         padding: 25px;
@@ -1476,7 +1452,6 @@ footer {
     html {
         scroll-behavior: auto;
     }
-
 
     *,
     *::before,
