@@ -1,113 +1,181 @@
 /* =========================================
-   CREATIVE DEVELOPMENT GROUP
-   WEBSITE JAVASCRIPT
+CREATIVE DEVELOPMENT GROUP
+WEBSITE JAVASCRIPT
 ========================================= */
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    /* =========================================
-       MOBILE NAVIGATION
-    ========================================= */
+```
+/* =========================================
+   MOBILE NAVIGATION
+========================================= */
 
-    const menuToggle = document.getElementById("menuToggle");
-    const nav = document.getElementById("nav");
+const menuToggle =
+    document.getElementById("menuToggle");
 
-    if (menuToggle && nav) {
+const nav =
+    document.getElementById("nav");
 
-        menuToggle.addEventListener("click", function () {
 
-            const isOpen = nav.classList.toggle("active");
+if (menuToggle && nav) {
+
+    menuToggle.addEventListener("click", function () {
+
+        const isOpen =
+            nav.classList.toggle("active");
+
+
+        menuToggle.setAttribute(
+            "aria-expanded",
+            isOpen ? "true" : "false"
+        );
+
+
+        menuToggle.setAttribute(
+            "aria-label",
+            isOpen
+                ? "Close navigation"
+                : "Open navigation"
+        );
+
+
+        const spans =
+            menuToggle.querySelectorAll("span");
+
+
+        if (isOpen) {
+
+            spans[0].style.transform =
+                "rotate(45deg) translate(5px, 5px)";
+
+            spans[1].style.opacity = "0";
+
+            spans[2].style.transform =
+                "rotate(-45deg) translate(5px, -5px)";
+
+        } else {
+
+            spans[0].style.transform = "none";
+
+            spans[1].style.opacity = "1";
+
+            spans[2].style.transform = "none";
+
+        }
+
+    });
+
+
+    /* Close menu after navigation */
+
+    const navLinks =
+        nav.querySelectorAll("a");
+
+
+    navLinks.forEach(function (link) {
+
+        link.addEventListener("click", function () {
+
+            nav.classList.remove("active");
+
 
             menuToggle.setAttribute(
                 "aria-expanded",
-                isOpen ? "true" : "false"
+                "false"
             );
+
 
             menuToggle.setAttribute(
                 "aria-label",
-                isOpen ? "Close navigation" : "Open navigation"
+                "Open navigation"
             );
 
-            menuToggle.textContent = isOpen ? "✕" : "☰";
+
+            const spans =
+                menuToggle.querySelectorAll("span");
+
+
+            spans[0].style.transform = "none";
+
+            spans[1].style.opacity = "1";
+
+            spans[2].style.transform = "none";
 
         });
 
+    });
 
-        /* Close menu after clicking a navigation link */
-
-        const navLinks = nav.querySelectorAll("a");
-
-        navLinks.forEach(function (link) {
-
-            link.addEventListener("click", function () {
-
-                nav.classList.remove("active");
-
-                menuToggle.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
-
-                menuToggle.setAttribute(
-                    "aria-label",
-                    "Open navigation"
-                );
-
-                menuToggle.textContent = "☰";
-
-            });
-
-        });
-
-    }
+}
 
 
 
-    /* =========================================
-       DYNAMIC COPYRIGHT YEAR
-    ========================================= */
+/* =========================================
+   DYNAMIC COPYRIGHT YEAR
+========================================= */
 
-    const yearElement = document.getElementById("year");
-
-    if (yearElement) {
-
-        yearElement.textContent = new Date().getFullYear();
-
-    }
+const yearElement =
+    document.getElementById("year");
 
 
+if (yearElement) {
 
-    /* =========================================
-       WHATSAPP CONTACT FORM
-    ========================================= */
+    yearElement.textContent =
+        new Date().getFullYear();
 
-    const contactForm = document.getElementById("contactForm");
+}
 
-    if (contactForm) {
 
-        contactForm.addEventListener("submit", function (event) {
+
+/* =========================================
+   WHATSAPP CONTACT FORM
+========================================= */
+
+const contactForm =
+    document.getElementById("contactForm");
+
+
+if (contactForm) {
+
+    contactForm.addEventListener(
+        "submit",
+        function (event) {
 
             event.preventDefault();
 
 
-            /* Get form values */
-
             const name =
-                document.getElementById("name").value.trim();
+                document
+                    .getElementById("name")
+                    .value
+                    .trim();
+
 
             const phone =
-                document.getElementById("phone").value.trim();
+                document
+                    .getElementById("phone")
+                    .value
+                    .trim();
+
 
             const service =
-                document.getElementById("service").value;
+                document
+                    .getElementById("service")
+                    .value;
+
 
             const message =
-                document.getElementById("message").value.trim();
+                document
+                    .getElementById("message")
+                    .value
+                    .trim();
 
 
-            /* Basic validation */
-
-            if (!name || !phone || !service || !message) {
+            if (
+                !name ||
+                !phone ||
+                !service ||
+                !message
+            ) {
 
                 alert(
                     "Please complete all fields before sending your enquiry."
@@ -118,54 +186,38 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
 
-            /* =====================================
-               CREATE WHATSAPP MESSAGE
-            ====================================== */
+            /*
+                WhatsApp message
+            */
 
-            const whatsappMessage =
-                "Hello Creative Development Group,%0A%0A" +
+            const whatsappText =
+                `Hello Creative Development Group,
+```
 
-                "I would like to request a quotation.%0A%0A" +
+I would like to request a quotation.
 
-                "Name: " +
-                encodeURIComponent(name) +
+Name: ${name}
 
-                "%0A" +
+Contact Number: ${phone}
 
-                "Contact Number: " +
-                encodeURIComponent(phone) +
+Service Required: ${service}
 
-                "%0A" +
+Message:
+${message}
 
-                "Service Required: " +
-                encodeURIComponent(service) +
+Thank you.`;
 
-                "%0A%0A" +
-
-                "Message:%0A" +
-                encodeURIComponent(message) +
-
-                "%0A%0A" +
-
-                "Thank you.";
-
-
-            /* =====================================
-               CREATIVE DEVELOPMENT GROUP
-               WHATSAPP NUMBER
-            ====================================== */
-
-            const whatsappNumber = "27722301683";
+```
+            const whatsappNumber =
+                "27722301683";
 
 
             const whatsappURL =
                 "https://wa.me/" +
                 whatsappNumber +
                 "?text=" +
-                whatsappMessage;
+                encodeURIComponent(whatsappText);
 
-
-            /* Open WhatsApp */
 
             window.open(
                 whatsappURL,
@@ -174,30 +226,34 @@ document.addEventListener("DOMContentLoaded", function () {
             );
 
 
-            /* Reset form */
-
             contactForm.reset();
 
-        });
+        }
+    );
 
-    }
-
-
-
-    /* =========================================
-       SMOOTH SCROLLING
-    ========================================= */
-
-    const anchorLinks =
-        document.querySelectorAll('a[href^="#"]');
+}
 
 
-    anchorLinks.forEach(function (link) {
 
-        link.addEventListener("click", function (event) {
+/* =========================================
+   SMOOTH SCROLLING
+========================================= */
+
+const anchorLinks =
+    document.querySelectorAll(
+        'a[href^="#"]'
+    );
+
+
+anchorLinks.forEach(function (link) {
+
+    link.addEventListener(
+        "click",
+        function (event) {
 
             const targetID =
                 this.getAttribute("href");
+
 
             if (
                 !targetID ||
@@ -211,69 +267,142 @@ document.addEventListener("DOMContentLoaded", function () {
                 document.querySelector(targetID);
 
 
-            if (target) {
-
-                event.preventDefault();
-
-                const header =
-                    document.querySelector(".site-header");
-
-                const headerHeight =
-                    header
-                        ? header.offsetHeight
-                        : 0;
-
-
-                const targetPosition =
-                    target.getBoundingClientRect().top +
-                    window.pageYOffset -
-                    headerHeight;
-
-
-                window.scrollTo({
-
-                    top: targetPosition,
-
-                    behavior: "smooth"
-
-                });
-
+            if (!target) {
+                return;
             }
 
-        });
 
-    }
-
+            event.preventDefault();
 
 
-    /* =========================================
-       CLOSE MOBILE MENU WHEN RESIZING
-    ========================================= */
+            const header =
+                document.querySelector(
+                    ".site-header"
+                );
 
-    window.addEventListener("resize", function () {
+
+            const headerHeight =
+                header
+                    ? header.offsetHeight
+                    : 0;
+
+
+            const targetPosition =
+                target.getBoundingClientRect().top +
+                window.pageYOffset -
+                headerHeight;
+
+
+            window.scrollTo({
+
+                top: targetPosition,
+
+                behavior: "smooth"
+
+            });
+
+        }
+    );
+
+});
+
+
+
+/* =========================================
+   CLOSE MOBILE NAV ON RESIZE
+========================================= */
+
+window.addEventListener(
+    "resize",
+    function () {
 
         if (
-            window.innerWidth > 768 &&
+            window.innerWidth > 850 &&
             nav &&
             menuToggle
         ) {
 
             nav.classList.remove("active");
 
+
             menuToggle.setAttribute(
                 "aria-expanded",
                 "false"
             );
 
-            menuToggle.setAttribute(
-                "aria-label",
-                "Open navigation"
-            );
 
-            menuToggle.textContent = "☰";
+            const spans =
+                menuToggle.querySelectorAll(
+                    "span"
+                );
+
+
+            spans[0].style.transform = "none";
+
+            spans[1].style.opacity = "1";
+
+            spans[2].style.transform = "none";
 
         }
 
-    });
+    }
+);
+
+
+
+/* =========================================
+   SERVICE CARD INTERACTION
+========================================= */
+
+const serviceCards =
+    document.querySelectorAll(
+        ".service-card"
+    );
+
+
+serviceCards.forEach(function (card) {
+
+    card.addEventListener(
+        "mouseenter",
+        function () {
+
+            this.style.zIndex = "2";
+
+        }
+    );
+
+
+    card.addEventListener(
+        "mouseleave",
+        function () {
+
+            this.style.zIndex = "1";
+
+        }
+    );
+
+});
+
+
+
+/* =========================================
+   PREVENT EMPTY LINKS
+========================================= */
+
+document.querySelectorAll(
+    'a[href="#"]'
+).forEach(function (link) {
+
+    link.addEventListener(
+        "click",
+        function (event) {
+
+            event.preventDefault();
+
+        }
+    );
+
+});
+```
 
 });
