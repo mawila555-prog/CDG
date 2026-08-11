@@ -1,408 +1,521 @@
+```javascript
 /* =========================================================
    CREATIVE DEVELOPMENT GROUP
-   Main Website JavaScript
-========================================================= */
+   WEBSITE JAVASCRIPT
+   ========================================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    /* =====================================================
+       ELEMENTS
+       ===================================================== */
+
+    const menuToggle = document.getElementById("menuToggle");
+    const mainNav = document.getElementById("mainNav");
+    const navLinks = document.querySelectorAll("#mainNav a");
+    const contactForm = document.getElementById("contactForm");
 
 
-/* =========================================================
-   MOBILE NAVIGATION
-========================================================= */
+    /* =====================================================
+       MOBILE MENU
+       ===================================================== */
 
-const menuToggle = document.getElementById("menuToggle");
-const nav = document.getElementById("nav");
+    if (menuToggle && mainNav) {
 
+        menuToggle.addEventListener("click", () => {
 
-if (menuToggle && nav) {
-
-    menuToggle.addEventListener("click", function () {
-
-        const isOpen = nav.classList.toggle("active");
-
-        menuToggle.setAttribute(
-            "aria-expanded",
-            isOpen
-        );
-
-        menuToggle.setAttribute(
-            "aria-label",
-            isOpen
-                ? "Close navigation"
-                : "Open navigation"
-        );
-
-        menuToggle.textContent =
-            isOpen ? "✕" : "☰";
-
-    });
-
-
-    /* Close menu when a navigation link is clicked */
-
-    const navLinks =
-        nav.querySelectorAll("a");
-
-
-    navLinks.forEach(function (link) {
-
-        link.addEventListener("click", function () {
-
-            nav.classList.remove("active");
+            const isOpen =
+                mainNav.classList.toggle("active");
 
             menuToggle.setAttribute(
                 "aria-expanded",
-                "false"
+                isOpen ? "true" : "false"
             );
 
-            menuToggle.setAttribute(
-                "aria-label",
-                "Open navigation"
-            );
+            /* Change hamburger icon */
 
-            menuToggle.textContent = "☰";
+            const icon =
+                menuToggle.querySelector("i");
+
+            if (icon) {
+
+                if (isOpen) {
+
+                    icon.classList.remove("fa-bars");
+
+                    icon.classList.add("fa-xmark");
+
+                } else {
+
+                    icon.classList.remove("fa-xmark");
+
+                    icon.classList.add("fa-bars");
+                }
+            }
 
         });
 
-    });
 
-}
+        /* =================================================
+           CLOSE MOBILE MENU WHEN LINK IS CLICKED
+           ================================================= */
 
+        navLinks.forEach((link) => {
 
-/* =========================================================
-   CURRENT YEAR
-========================================================= */
+            link.addEventListener("click", () => {
 
-const yearElement =
-    document.getElementById("year");
+                mainNav.classList.remove("active");
 
-
-if (yearElement) {
-
-    yearElement.textContent =
-        new Date().getFullYear();
-
-}
-
-
-/* =========================================================
-   CONTACT FORM → WHATSAPP
-========================================================= */
-
-const contactForm =
-    document.getElementById("contactForm");
-
-
-if (contactForm) {
-
-    contactForm.addEventListener(
-        "submit",
-        function (event) {
-
-            event.preventDefault();
-
-
-            /* Get form values */
-
-            const name =
-                document.getElementById("name").value.trim();
-
-            const phone =
-                document.getElementById("phone").value.trim();
-
-            const service =
-                document.getElementById("service").value;
-
-            const message =
-                document.getElementById("message").value.trim();
-
-
-            /* Basic validation */
-
-            if (!name || !phone || !service || !message) {
-
-                alert(
-                    "Please complete all fields before sending your enquiry."
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    "false"
                 );
 
-                return;
+                const icon =
+                    menuToggle.querySelector("i");
 
-            }
+                if (icon) {
 
+                    icon.classList.remove("fa-xmark");
 
-            /*
-                Creative Development Group
-                WhatsApp number:
-                072 230 1683
+                    icon.classList.add("fa-bars");
+                }
 
-                South African international format:
-                27722301683
-            */
+            });
 
-            const businessNumber =
-                "27722301683";
+        });
 
 
-            /* Build WhatsApp message */
+        /* =================================================
+           CLOSE MENU WHEN CLICKING OUTSIDE
+           ================================================= */
 
-            const whatsappMessage =
-                `Hello Creative Development Group,
+        document.addEventListener("click", (event) => {
 
-I would like to request a quotation.
+            const clickedInsideMenu =
+                mainNav.contains(event.target);
 
-Name: ${name}
-
-Contact Number: ${phone}
-
-Service Required: ${service}
-
-Message:
-${message}
-
-Thank you.`;
-
-
-            /* Encode message for URL */
-
-            const encodedMessage =
-                encodeURIComponent(
-                    whatsappMessage
-                );
-
-
-            /* Create WhatsApp URL */
-
-            const whatsappURL =
-                `https://wa.me/${businessNumber}?text=${encodedMessage}`;
-
-
-            /* Open WhatsApp */
-
-            window.open(
-                whatsappURL,
-                "_blank"
-            );
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   SMOOTH SCROLLING
-========================================================= */
-
-const internalLinks =
-    document.querySelectorAll(
-        'a[href^="#"]'
-    );
-
-
-internalLinks.forEach(function (link) {
-
-    link.addEventListener(
-        "click",
-        function (event) {
-
-            const targetID =
-                this.getAttribute("href");
-
+            const clickedToggle =
+                menuToggle.contains(event.target);
 
             if (
-                !targetID ||
-                targetID === "#"
+                !clickedInsideMenu &&
+                !clickedToggle &&
+                mainNav.classList.contains("active")
             ) {
 
-                return;
+                mainNav.classList.remove("active");
 
-            }
-
-
-            const target =
-                document.querySelector(
-                    targetID
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    "false"
                 );
 
+                const icon =
+                    menuToggle.querySelector("i");
 
-            if (!target) {
+                if (icon) {
 
-                return;
+                    icon.classList.remove("fa-xmark");
 
+                    icon.classList.add("fa-bars");
+                }
             }
 
+        });
+
+    }
+
+
+    /* =====================================================
+       DESKTOP / MOBILE RESPONSIVE MENU
+       Automatically resets menu when screen changes
+       ===================================================== */
+
+    const desktopBreakpoint = 700;
+
+    window.addEventListener("resize", () => {
+
+        if (window.innerWidth > desktopBreakpoint) {
+
+            if (mainNav) {
+                mainNav.classList.remove("active");
+            }
+
+            if (menuToggle) {
+
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+                const icon =
+                    menuToggle.querySelector("i");
+
+                if (icon) {
+
+                    icon.classList.remove("fa-xmark");
+
+                    icon.classList.add("fa-bars");
+                }
+            }
+
+        }
+
+    });
+
+
+    /* =====================================================
+       SMOOTH SCROLL
+       ===================================================== */
+
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+
+        link.addEventListener("click", (event) => {
+
+            const targetId =
+                link.getAttribute("href");
+
+            if (
+                !targetId ||
+                targetId === "#"
+            ) {
+                return;
+            }
+
+            const target =
+                document.querySelector(targetId);
+
+            if (!target) {
+                return;
+            }
 
             event.preventDefault();
 
-
             const header =
-                document.querySelector(
-                    ".site-header"
-                );
-
+                document.querySelector(".site-header");
 
             const headerHeight =
                 header
                     ? header.offsetHeight
                     : 0;
 
-
             const targetPosition =
-                target.getBoundingClientRect().top
-                +
-                window.pageYOffset
-                -
+                target.getBoundingClientRect().top +
+                window.pageYOffset -
                 headerHeight;
 
-
             window.scrollTo({
-
                 top: targetPosition,
-
                 behavior: "smooth"
-
             });
 
-        }
-    );
+        });
 
-});
-
-
-/* =========================================================
-   HEADER SHADOW ON SCROLL
-========================================================= */
-
-const header =
-    document.querySelector(
-        ".site-header"
-    );
+    });
 
 
-if (header) {
+    /* =====================================================
+       CONTACT FORM
+       ===================================================== */
 
-    window.addEventListener(
-        "scroll",
-        function () {
+    if (contactForm) {
 
-            if (window.scrollY > 10) {
+        contactForm.addEventListener(
+            "submit",
+            (event) => {
 
-                header.style.boxShadow =
-                    "0 4px 18px rgba(0, 0, 0, 0.10)";
-
-            } else {
-
-                header.style.boxShadow =
-                    "0 2px 12px rgba(0, 0, 0, 0.05)";
-
-            }
-
-        }
-    );
-
-}
+                event.preventDefault();
 
 
-/* =========================================================
-   SERVICE CARD ANIMATION
-========================================================= */
+                /* -----------------------------------------
+                   GET FORM VALUES
+                   ----------------------------------------- */
 
-const serviceCards =
-    document.querySelectorAll(
-        ".service-card"
-    );
+                const name =
+                    contactForm.elements["name"]
+                        ?.value
+                        .trim();
+
+                const email =
+                    contactForm.elements["email"]
+                        ?.value
+                        .trim();
+
+                const service =
+                    contactForm.elements["service"]
+                        ?.value
+                        .trim();
+
+                const message =
+                    contactForm.elements["message"]
+                        ?.value
+                        .trim();
 
 
-if (
-    serviceCards.length &&
-    "IntersectionObserver" in window
-) {
+                /* -----------------------------------------
+                   BASIC VALIDATION
+                   ----------------------------------------- */
 
-    const observer =
-        new IntersectionObserver(
-            function (entries, observer) {
+                if (!name) {
 
-                entries.forEach(
-                    function (entry) {
+                    alert(
+                        "Please enter your full name."
+                    );
 
-                        if (
-                            entry.isIntersecting
-                        ) {
+                    contactForm.elements["name"].focus();
 
-                            entry.target.style.opacity =
-                                "1";
+                    return;
+                }
 
-                            entry.target.style.transform =
-                                "translateY(0)";
 
-                            observer.unobserve(
-                                entry.target
-                            );
+                if (!email) {
 
-                        }
+                    alert(
+                        "Please enter your email address."
+                    );
 
+                    contactForm.elements["email"].focus();
+
+                    return;
+                }
+
+
+                /* Email validation */
+
+                const emailPattern =
+                    /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+                if (!emailPattern.test(email)) {
+
+                    alert(
+                        "Please enter a valid email address."
+                    );
+
+                    contactForm.elements["email"].focus();
+
+                    return;
+                }
+
+
+                if (!service) {
+
+                    alert(
+                        "Please select a service."
+                    );
+
+                    contactForm.elements["service"].focus();
+
+                    return;
+                }
+
+
+                if (!message) {
+
+                    alert(
+                        "Please enter a message."
+                    );
+
+                    contactForm.elements["message"].focus();
+
+                    return;
+                }
+
+
+                /* -----------------------------------------
+                   SUBMIT BUTTON
+                   ----------------------------------------- */
+
+                const submitButton =
+                    contactForm.querySelector(
+                        'button[type="submit"]'
+                    );
+
+                const originalText =
+                    submitButton
+                        ? submitButton.textContent
+                        : "Send Enquiry";
+
+
+                if (submitButton) {
+
+                    submitButton.disabled = true;
+
+                    submitButton.textContent =
+                        "Preparing...";
+                }
+
+
+                /* -----------------------------------------
+                   CREATE MAILTO
+                   
+                   IMPORTANT:
+                   Replace the email address below with
+                   your actual CDG business email.
+                   ----------------------------------------- */
+
+                const recipient =
+                    "YOUR-EMAIL@example.com";
+
+
+                const subject =
+                    encodeURIComponent(
+                        `Website Enquiry - ${service}`
+                    );
+
+
+                const body =
+                    encodeURIComponent(
+`Hello Creative Development Group,
+
+I would like to enquire about your services.
+
+Name:
+${name}
+
+Email:
+${email}
+
+Service Required:
+${service}
+
+Message:
+${message}
+
+Kind regards,
+${name}`
+                    );
+
+
+                /* -----------------------------------------
+                   OPEN EMAIL CLIENT
+                   ----------------------------------------- */
+
+                window.location.href =
+                    `mailto:${recipient}?subject=${subject}&body=${body}`;
+
+
+                /* -----------------------------------------
+                   RESET BUTTON
+                   ----------------------------------------- */
+
+                setTimeout(() => {
+
+                    if (submitButton) {
+
+                        submitButton.disabled = false;
+
+                        submitButton.textContent =
+                            originalText;
                     }
-                );
 
-            },
-            {
-                threshold: 0.15
+                }, 2000);
+
             }
         );
 
-
-    serviceCards.forEach(
-        function (card) {
-
-            card.style.opacity = "0";
-
-            card.style.transform =
-                "translateY(15px)";
-
-            card.style.transition =
-                "opacity 0.5s ease, transform 0.5s ease";
-
-            observer.observe(card);
-
-        }
-    );
-
-}
+    }
 
 
-/* =========================================================
-   PREVENT EMPTY FORM SUBMISSION
-========================================================= */
+    /* =====================================================
+       ACTIVE NAVIGATION
+       Highlights the current section while scrolling
+       ===================================================== */
 
-const inputs =
-    document.querySelectorAll(
-        ".contact-form input, .contact-form textarea"
-    );
+    const sections =
+        document.querySelectorAll(
+            "section[id]"
+        );
+
+    const desktopNavLinks =
+        document.querySelectorAll(
+            '#mainNav a[href^="#"]'
+        );
 
 
-inputs.forEach(function (input) {
+    const updateActiveNavigation = () => {
 
-    input.addEventListener(
-        "input",
-        function () {
+        let currentSection = "";
+
+        const scrollPosition =
+            window.scrollY +
+            120;
+
+
+        sections.forEach((section) => {
+
+            const sectionTop =
+                section.offsetTop;
+
+            const sectionHeight =
+                section.offsetHeight;
 
             if (
-                this.value.trim() !== ""
+                scrollPosition >= sectionTop &&
+                scrollPosition <
+                    sectionTop + sectionHeight
             ) {
 
-                this.style.borderColor =
-                    "";
-
+                currentSection =
+                    section.getAttribute("id");
             }
 
-        }
+        });
+
+
+        desktopNavLinks.forEach((link) => {
+
+            link.classList.remove("active-link");
+
+            const href =
+                link.getAttribute("href");
+
+            if (
+                href === `#${currentSection}` &&
+                !link.classList.contains(
+                    "nav-quote"
+                )
+            ) {
+
+                link.classList.add(
+                    "active-link"
+                );
+            }
+
+        });
+
+    };
+
+
+    window.addEventListener(
+        "scroll",
+        updateActiveNavigation
     );
 
+    updateActiveNavigation();
+
+
+    /* =====================================================
+       CURRENT YEAR
+       Automatically updates footer year
+       ===================================================== */
+
+    const footer =
+        document.querySelector(
+            ".footer-bottom"
+        );
+
+    if (footer) {
+
+        const currentYear =
+            new Date().getFullYear();
+
+        footer.innerHTML =
+            footer.innerHTML.replace(
+                "2019–2026",
+                `2019–${currentYear}`
+            );
+    }
+
 });
-
-
-/* =========================================================
-   CONSOLE MESSAGE
-========================================================= */
-
-console.log(
-    "Creative Development Group website loaded successfully."
-);
+```
