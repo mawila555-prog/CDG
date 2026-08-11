@@ -4,311 +4,395 @@
 ========================================================= */
 
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
 
 
-    /* =====================================================
-       ELEMENTS
-    ====================================================== */
+        /* =====================================================
+           ELEMENTS
+        ====================================================== */
 
-    const header = document.getElementById("siteHeader");
-
-    const menuToggle = document.getElementById("menuToggle");
-
-    const nav = document.getElementById("nav");
-
-    const backToTop = document.getElementById("backToTop");
-
-    const contactForm = document.getElementById("contactForm");
-
-    const serviceSelect = document.getElementById("service");
-
-    const yearElement = document.getElementById("year");
+        const header =
+            document.getElementById(
+                "siteHeader"
+            );
 
 
-    /* =====================================================
-       CURRENT YEAR
-    ====================================================== */
-
-    if (yearElement) {
-
-        yearElement.textContent =
-            new Date().getFullYear();
-
-    }
+        const menuToggle =
+            document.getElementById(
+                "menuToggle"
+            );
 
 
-    /* =====================================================
-       MOBILE MENU
-    ====================================================== */
-
-    if (menuToggle && nav) {
-
-        menuToggle.addEventListener(
-            "click",
-            function () {
-
-                const isOpen =
-                    nav.classList.toggle("active");
-
-                menuToggle.classList.toggle(
-                    "active",
-                    isOpen
-                );
-
-                menuToggle.setAttribute(
-                    "aria-expanded",
-                    isOpen
-                        ? "true"
-                        : "false"
-                );
-
-                menuToggle.setAttribute(
-                    "aria-label",
-                    isOpen
-                        ? "Close navigation menu"
-                        : "Open navigation menu"
-                );
-
-            }
-        );
+        const nav =
+            document.getElementById(
+                "nav"
+            );
 
 
-        /* CLOSE MENU AFTER CLICKING LINK */
+        const backToTop =
+            document.getElementById(
+                "backToTop"
+            );
 
-        const navigationLinks =
-            nav.querySelectorAll("a");
 
-        navigationLinks.forEach(function (link) {
+        const contactForm =
+            document.getElementById(
+                "contactForm"
+            );
 
-            link.addEventListener(
+
+        const serviceSelect =
+            document.getElementById(
+                "service"
+            );
+
+
+        const yearElement =
+            document.getElementById(
+                "year"
+            );
+
+
+        /* =====================================================
+           CURRENT YEAR
+        ====================================================== */
+
+        if (yearElement) {
+
+            yearElement.textContent =
+                new Date().getFullYear();
+
+        }
+
+
+        /* =====================================================
+           MOBILE MENU
+        ====================================================== */
+
+        if (
+            menuToggle &&
+            nav
+        ) {
+
+
+            menuToggle.addEventListener(
                 "click",
                 function () {
 
-                    nav.classList.remove("active");
 
-                    menuToggle.classList.remove(
-                        "active"
+                    const isOpen =
+                        nav.classList.toggle(
+                            "active"
+                        );
+
+
+                    menuToggle.classList.toggle(
+                        "active",
+                        isOpen
                     );
+
 
                     menuToggle.setAttribute(
                         "aria-expanded",
-                        "false"
+                        isOpen
+                            ? "true"
+                            : "false"
                     );
+
 
                     menuToggle.setAttribute(
                         "aria-label",
-                        "Open navigation menu"
+                        isOpen
+                            ? "Close navigation menu"
+                            : "Open navigation menu"
                     );
+
 
                 }
             );
 
-        });
+
+            /* CLOSE MENU AFTER LINK CLICK */
+
+            nav.querySelectorAll("a")
+                .forEach(
+                    function (link) {
 
 
-        /* CLOSE MOBILE MENU WHEN RESIZING TO PC */
+                        link.addEventListener(
+                            "click",
+                            function () {
 
-        window.addEventListener(
-            "resize",
-            function () {
 
-                if (window.innerWidth > 900) {
+                                nav.classList.remove(
+                                    "active"
+                                );
 
-                    nav.classList.remove("active");
 
-                    menuToggle.classList.remove(
-                        "active"
-                    );
+                                menuToggle
+                                    .classList
+                                    .remove(
+                                        "active"
+                                    );
 
-                    menuToggle.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
+
+                                menuToggle.setAttribute(
+                                    "aria-expanded",
+                                    "false"
+                                );
+
+
+                            }
+                        );
+
+
+                    }
+                );
+
+
+            /* RESET MENU WHEN RETURNING TO PC */
+
+            window.addEventListener(
+                "resize",
+                function () {
+
+
+                    if (
+                        window.innerWidth >
+                        850
+                    ) {
+
+
+                        nav.classList.remove(
+                            "active"
+                        );
+
+
+                        menuToggle
+                            .classList
+                            .remove(
+                                "active"
+                            );
+
+
+                        menuToggle.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
+
+
+                    }
+
 
                 }
+            );
 
-            }
-        );
-
-    }
-
-
-    /* =====================================================
-       HEADER SCROLL EFFECT
-    ====================================================== */
-
-    function handleScroll() {
-
-        if (header) {
-
-            if (window.scrollY > 20) {
-
-                header.classList.add("scrolled");
-
-            } else {
-
-                header.classList.remove("scrolled");
-
-            }
 
         }
 
 
-        /* BACK TO TOP */
+        /* =====================================================
+           HEADER SCROLL EFFECT
+        ====================================================== */
+
+        function handleScroll() {
+
+
+            if (header) {
+
+
+                header.classList.toggle(
+                    "scrolled",
+                    window.scrollY > 20
+                );
+
+
+            }
+
+
+            if (backToTop) {
+
+
+                backToTop.classList.toggle(
+                    "show",
+                    window.scrollY > 600
+                );
+
+
+            }
+
+
+        }
+
+
+        window.addEventListener(
+            "scroll",
+            handleScroll,
+            {
+                passive: true
+            }
+        );
+
+
+        handleScroll();
+
+
+        /* =====================================================
+           BACK TO TOP
+        ====================================================== */
 
         if (backToTop) {
 
-            if (window.scrollY > 600) {
 
-                backToTop.classList.add("show");
+            backToTop.addEventListener(
+                "click",
+                function () {
 
-            } else {
 
-                backToTop.classList.remove("show");
+                    window.scrollTo({
 
-            }
+                        top: 0,
+
+                        behavior: "smooth"
+
+                    });
+
+
+                }
+            );
+
 
         }
 
-    }
+
+        /* =====================================================
+           SERVICE SELECTION
+        ====================================================== */
+
+        const serviceLinks =
+            document.querySelectorAll(
+                "[data-service]"
+            );
 
 
-    window.addEventListener(
-        "scroll",
-        handleScroll,
-        { passive: true }
-    );
+        serviceLinks.forEach(
+            function (link) {
 
 
-    handleScroll();
+                link.addEventListener(
+                    "click",
+                    function () {
 
 
-    /* =====================================================
-       BACK TO TOP
-    ====================================================== */
+                        const selectedService =
+                            link.getAttribute(
+                                "data-service"
+                            );
 
-    if (backToTop) {
 
-        backToTop.addEventListener(
-            "click",
-            function () {
+                        if (
+                            selectedService &&
+                            serviceSelect
+                        ) {
 
-                window.scrollTo({
-                    top: 0,
-                    behavior: "smooth"
-                });
+
+                            serviceSelect.value =
+                                selectedService;
+
+
+                        }
+
+
+                    }
+                );
+
 
             }
         );
 
-    }
+
+        /* =====================================================
+           CONTACT FORM TO WHATSAPP
+        ====================================================== */
+
+        if (contactForm) {
 
 
-    /* =====================================================
-       SERVICE CARD QUOTATION SELECTION
-    ====================================================== */
-
-    const serviceLinks =
-        document.querySelectorAll(
-            "[data-service]"
-        );
+            contactForm.addEventListener(
+                "submit",
+                function (event) {
 
 
-    serviceLinks.forEach(function (link) {
-
-        link.addEventListener(
-            "click",
-            function () {
-
-                const selectedService =
-                    link.getAttribute(
-                        "data-service"
-                    );
-
-                if (
-                    selectedService &&
-                    serviceSelect
-                ) {
-
-                    serviceSelect.value =
-                        selectedService;
-
-                }
-
-            }
-        );
-
-    });
+                    event.preventDefault();
 
 
-    /* =====================================================
-       CONTACT FORM
-       SEND VIA WHATSAPP
-    ====================================================== */
-
-    if (contactForm) {
-
-        contactForm.addEventListener(
-            "submit",
-            function (event) {
-
-                event.preventDefault();
+                    const name =
+                        document
+                            .getElementById(
+                                "name"
+                            )
+                            .value
+                            .trim();
 
 
-                /* GET VALUES */
-
-                const name =
-                    document
-                        .getElementById("name")
-                        .value
-                        .trim();
-
-                const phone =
-                    document
-                        .getElementById("phone")
-                        .value
-                        .trim();
-
-                const service =
-                    document
-                        .getElementById("service")
-                        .value;
-
-                const message =
-                    document
-                        .getElementById("message")
-                        .value
-                        .trim();
+                    const phone =
+                        document
+                            .getElementById(
+                                "phone"
+                            )
+                            .value
+                            .trim();
 
 
-                /* BASIC VALIDATION */
-
-                if (
-                    !name ||
-                    !phone ||
-                    !service ||
-                    !message
-                ) {
-
-                    alert(
-                        "Please complete all fields before sending your enquiry."
-                    );
-
-                    return;
-
-                }
+                    const service =
+                        document
+                            .getElementById(
+                                "service"
+                            )
+                            .value;
 
 
-                /* BUSINESS NUMBER */
+                    const message =
+                        document
+                            .getElementById(
+                                "message"
+                            )
+                            .value
+                            .trim();
 
-                const businessNumber =
-                    "27722301683";
+
+                    /* VALIDATION */
+
+                    if (
+                        !name ||
+                        !phone ||
+                        !service ||
+                        !message
+                    ) {
 
 
-                /* WHATSAPP MESSAGE */
+                        alert(
+                            "Please complete all fields before sending your enquiry."
+                        );
 
-                const whatsappMessage =
+
+                        return;
+
+
+                    }
+
+
+                    /* BUSINESS NUMBER */
+
+                    const businessNumber =
+                        "27722301683";
+
+
+                    /* MESSAGE */
+
+                    const whatsappMessage =
 `Hello Creative Development Group,
 
 I would like to request a quotation.
@@ -323,213 +407,160 @@ ${message}
 Thank you.`;
 
 
-                /* CREATE WHATSAPP URL */
+                    /* WHATSAPP LINK */
 
-                const whatsappURL =
-                    "https://wa.me/" +
-                    businessNumber +
-                    "?text=" +
-                    encodeURIComponent(
-                        whatsappMessage
+                    const whatsappURL =
+                        "https://wa.me/" +
+                        businessNumber +
+                        "?text=" +
+                        encodeURIComponent(
+                            whatsappMessage
+                        );
+
+
+                    /* OPEN WHATSAPP */
+
+                    window.open(
+                        whatsappURL,
+                        "_blank",
+                        "noopener,noreferrer"
                     );
 
 
-                /* OPEN WHATSAPP */
+                }
+            );
 
-                window.open(
-                    whatsappURL,
-                    "_blank",
-                    "noopener,noreferrer"
+
+        }
+
+
+        /* =====================================================
+           SMOOTH INTERNAL LINKS
+        ====================================================== */
+
+        const internalLinks =
+            document.querySelectorAll(
+                'a[href^="#"]'
+            );
+
+
+        internalLinks.forEach(
+            function (link) {
+
+
+                link.addEventListener(
+                    "click",
+                    function (event) {
+
+
+                        const targetID =
+                            link.getAttribute(
+                                "href"
+                            );
+
+
+                        if (
+                            !targetID ||
+                            targetID === "#"
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        const targetElement =
+                            document.querySelector(
+                                targetID
+                            );
+
+
+                        if (!targetElement) {
+
+                            return;
+
+                        }
+
+
+                        event.preventDefault();
+
+
+                        const headerHeight =
+                            header
+                                ? header.offsetHeight
+                                : 0;
+
+
+                        const targetPosition =
+                            targetElement
+                                .getBoundingClientRect()
+                                .top
+                            +
+                            window.pageYOffset
+                            -
+                            headerHeight
+                            -
+                            8;
+
+
+                        window.scrollTo({
+
+                            top: targetPosition,
+
+                            behavior: "smooth"
+
+                        });
+
+
+                    }
                 );
+
 
             }
         );
 
-    }
 
+        /* =====================================================
+           ESCAPE CLOSES MOBILE MENU
+        ====================================================== */
 
-    /* =====================================================
-       SMOOTH SCROLL FOR INTERNAL LINKS
-    ====================================================== */
-
-    const internalLinks =
-        document.querySelectorAll(
-            'a[href^="#"]'
-        );
-
-
-    internalLinks.forEach(function (link) {
-
-        link.addEventListener(
-            "click",
+        document.addEventListener(
+            "keydown",
             function (event) {
-
-                const targetID =
-                    link.getAttribute("href");
 
 
                 if (
-                    !targetID ||
-                    targetID === "#"
+                    event.key ===
+                    "Escape" &&
+                    nav &&
+                    menuToggle
                 ) {
 
-                    return;
 
-                }
-
-
-                const targetElement =
-                    document.querySelector(
-                        targetID
+                    nav.classList.remove(
+                        "active"
                     );
 
 
-                if (targetElement) {
-
-                    event.preventDefault();
-
-
-                    const headerHeight =
-                        header
-                            ? header.offsetHeight
-                            : 0;
+                    menuToggle
+                        .classList
+                        .remove(
+                            "active"
+                        );
 
 
-                    const targetPosition =
-                        targetElement
-                            .getBoundingClientRect()
-                            .top
-                        +
-                        window.pageYOffset
-                        -
-                        headerHeight
-                        -
-                        10;
+                    menuToggle.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
 
-
-                    window.scrollTo({
-
-                        top: targetPosition,
-
-                        behavior: "smooth"
-
-                    });
 
                 }
 
+
             }
         );
 
-    });
-
-
-    /* =====================================================
-       ACTIVE NAVIGATION LINK WHILE SCROLLING
-    ====================================================== */
-
-    const sections =
-        document.querySelectorAll(
-            "main section[id]"
-        );
-
-
-    const navLinks =
-        document.querySelectorAll(
-            '.nav a[href^="#"]'
-        );
-
-
-    function updateActiveNavigation() {
-
-        let currentSection = "";
-
-        const scrollPosition =
-            window.scrollY + 180;
-
-
-        sections.forEach(function (section) {
-
-            const sectionTop =
-                section.offsetTop;
-
-            const sectionHeight =
-                section.offsetHeight;
-
-
-            if (
-                scrollPosition >= sectionTop &&
-                scrollPosition <
-                sectionTop + sectionHeight
-            ) {
-
-                currentSection =
-                    section.getAttribute("id");
-
-            }
-
-        });
-
-
-        navLinks.forEach(function (link) {
-
-            link.classList.remove("active-link");
-
-
-            if (
-                link.getAttribute("href") ===
-                "#" + currentSection
-            ) {
-
-                link.classList.add(
-                    "active-link"
-                );
-
-            }
-
-        });
 
     }
-
-
-    window.addEventListener(
-        "scroll",
-        updateActiveNavigation,
-        { passive: true }
-    );
-
-
-    updateActiveNavigation();
-
-
-    /* =====================================================
-       ESCAPE KEY CLOSES MOBILE MENU
-    ====================================================== */
-
-    document.addEventListener(
-        "keydown",
-        function (event) {
-
-            if (
-                event.key === "Escape" &&
-                nav &&
-                menuToggle
-            ) {
-
-                nav.classList.remove("active");
-
-                menuToggle.classList.remove(
-                    "active"
-                );
-
-                menuToggle.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
-
-            }
-
-        }
-    );
-
-
-});
+);
