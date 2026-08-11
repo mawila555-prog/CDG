@@ -1,105 +1,46 @@
-/* =========================================
-CREATIVE DEVELOPMENT GROUP
-WEBSITE JAVASCRIPT
-========================================= */
+/* =====================================================
+   CREATIVE DEVELOPMENT GROUP
+   WEBSITE JAVASCRIPT
+===================================================== */
 
-document.addEventListener("DOMContentLoaded", function () {
 
-```
-/* =========================================
+/* =====================================================
    MOBILE NAVIGATION
-========================================= */
+===================================================== */
 
-const menuToggle =
-    document.getElementById("menuToggle");
-
-const nav =
-    document.getElementById("nav");
-
+const menuToggle = document.getElementById("menuToggle");
+const nav = document.getElementById("nav");
 
 if (menuToggle && nav) {
 
-    menuToggle.addEventListener("click", function () {
+    menuToggle.addEventListener("click", () => {
 
         const isOpen =
             nav.classList.toggle("active");
 
-
         menuToggle.setAttribute(
             "aria-expanded",
-            isOpen ? "true" : "false"
-        );
-
-
-        menuToggle.setAttribute(
-            "aria-label",
             isOpen
-                ? "Close navigation"
-                : "Open navigation"
         );
-
-
-        const spans =
-            menuToggle.querySelectorAll("span");
-
-
-        if (isOpen) {
-
-            spans[0].style.transform =
-                "rotate(45deg) translate(5px, 5px)";
-
-            spans[1].style.opacity = "0";
-
-            spans[2].style.transform =
-                "rotate(-45deg) translate(5px, -5px)";
-
-        } else {
-
-            spans[0].style.transform = "none";
-
-            spans[1].style.opacity = "1";
-
-            spans[2].style.transform = "none";
-
-        }
 
     });
 
 
-    /* Close menu after navigation */
+    /* Close menu when navigation link is clicked */
 
     const navLinks =
         nav.querySelectorAll("a");
 
+    navLinks.forEach(link => {
 
-    navLinks.forEach(function (link) {
-
-        link.addEventListener("click", function () {
+        link.addEventListener("click", () => {
 
             nav.classList.remove("active");
-
 
             menuToggle.setAttribute(
                 "aria-expanded",
                 "false"
             );
-
-
-            menuToggle.setAttribute(
-                "aria-label",
-                "Open navigation"
-            );
-
-
-            const spans =
-                menuToggle.querySelectorAll("span");
-
-
-            spans[0].style.transform = "none";
-
-            spans[1].style.opacity = "1";
-
-            spans[2].style.transform = "none";
 
         });
 
@@ -108,14 +49,43 @@ if (menuToggle && nav) {
 }
 
 
+/* =====================================================
+   HEADER SCROLL EFFECT
+===================================================== */
 
-/* =========================================
-   DYNAMIC COPYRIGHT YEAR
-========================================= */
+const siteHeader =
+    document.getElementById("siteHeader");
+
+function updateHeader() {
+
+    if (!siteHeader) return;
+
+    if (window.scrollY > 30) {
+
+        siteHeader.classList.add("scrolled");
+
+    } else {
+
+        siteHeader.classList.remove("scrolled");
+
+    }
+
+}
+
+window.addEventListener(
+    "scroll",
+    updateHeader
+);
+
+updateHeader();
+
+
+/* =====================================================
+   CURRENT YEAR
+===================================================== */
 
 const yearElement =
     document.getElementById("year");
-
 
 if (yearElement) {
 
@@ -125,10 +95,9 @@ if (yearElement) {
 }
 
 
-
-/* =========================================
-   WHATSAPP CONTACT FORM
-========================================= */
+/* =====================================================
+   CONTACT FORM → WHATSAPP
+===================================================== */
 
 const contactForm =
     document.getElementById("contactForm");
@@ -138,36 +107,26 @@ if (contactForm) {
 
     contactForm.addEventListener(
         "submit",
-        function (event) {
+        function(event) {
 
             event.preventDefault();
 
 
             const name =
-                document
-                    .getElementById("name")
-                    .value
-                    .trim();
-
+                document.getElementById("name")
+                    .value.trim();
 
             const phone =
-                document
-                    .getElementById("phone")
-                    .value
-                    .trim();
-
+                document.getElementById("phone")
+                    .value.trim();
 
             const service =
-                document
-                    .getElementById("service")
+                document.getElementById("service")
                     .value;
 
-
             const message =
-                document
-                    .getElementById("message")
-                    .value
-                    .trim();
+                document.getElementById("message")
+                    .value.trim();
 
 
             if (
@@ -186,47 +145,42 @@ if (contactForm) {
             }
 
 
-            /*
-                WhatsApp message
-            */
+            const whatsappMessage =
 
-            const whatsappText =
                 `Hello Creative Development Group,
-```
 
-I would like to request a quotation.
+` +
+                `I would like to make an enquiry.
 
-Name: ${name}
+` +
+                `Name: ${name}
 
-Contact Number: ${phone}
+` +
+                `Contact Number: ${phone}
 
-Service Required: ${service}
+` +
+                `Service Required: ${service}
 
-Message:
+` +
+                `Message:
 ${message}
 
-Thank you.`;
-
-```
-            const whatsappNumber =
-                "27722301683";
+` +
+                `Thank you.`;
 
 
             const whatsappURL =
-                "https://wa.me/" +
-                whatsappNumber +
-                "?text=" +
-                encodeURIComponent(whatsappText);
+
+                "https://wa.me/27722301683?text=" +
+                encodeURIComponent(
+                    whatsappMessage
+                );
 
 
             window.open(
                 whatsappURL,
-                "_blank",
-                "noopener,noreferrer"
+                "_blank"
             );
-
-
-            contactForm.reset();
 
         }
     );
@@ -234,175 +188,178 @@ Thank you.`;
 }
 
 
+/* =====================================================
+   BACK TO TOP
+===================================================== */
 
-/* =========================================
-   SMOOTH SCROLLING
-========================================= */
+const backToTop =
+    document.getElementById("backToTop");
 
-const anchorLinks =
-    document.querySelectorAll(
-        'a[href^="#"]'
+
+if (backToTop) {
+
+    window.addEventListener(
+        "scroll",
+        () => {
+
+            if (window.scrollY > 500) {
+
+                backToTop.classList.add(
+                    "visible"
+                );
+
+            } else {
+
+                backToTop.classList.remove(
+                    "visible"
+                );
+
+            }
+
+        }
     );
 
 
-anchorLinks.forEach(function (link) {
-
-    link.addEventListener(
+    backToTop.addEventListener(
         "click",
-        function (event) {
-
-            const targetID =
-                this.getAttribute("href");
-
-
-            if (
-                !targetID ||
-                targetID === "#"
-            ) {
-                return;
-            }
-
-
-            const target =
-                document.querySelector(targetID);
-
-
-            if (!target) {
-                return;
-            }
-
-
-            event.preventDefault();
-
-
-            const header =
-                document.querySelector(
-                    ".site-header"
-                );
-
-
-            const headerHeight =
-                header
-                    ? header.offsetHeight
-                    : 0;
-
-
-            const targetPosition =
-                target.getBoundingClientRect().top +
-                window.pageYOffset -
-                headerHeight;
-
+        () => {
 
             window.scrollTo({
-
-                top: targetPosition,
-
+                top: 0,
                 behavior: "smooth"
-
             });
 
         }
     );
 
-});
+}
 
 
+/* =====================================================
+   SMOOTH ANCHOR SCROLL
+===================================================== */
 
-/* =========================================
-   CLOSE MOBILE NAV ON RESIZE
-========================================= */
+document
+    .querySelectorAll('a[href^="#"]')
+    .forEach(anchor => {
 
-window.addEventListener(
-    "resize",
-    function () {
+        anchor.addEventListener(
+            "click",
+            function(event) {
 
-        if (
-            window.innerWidth > 850 &&
-            nav &&
-            menuToggle
-        ) {
+                const targetID =
+                    this.getAttribute("href");
 
-            nav.classList.remove("active");
+                if (
+                    !targetID ||
+                    targetID === "#"
+                ) {
+                    return;
+                }
 
 
-            menuToggle.setAttribute(
-                "aria-expanded",
-                "false"
+                const target =
+                    document.querySelector(
+                        targetID
+                    );
+
+
+                if (target) {
+
+                    event.preventDefault();
+
+                    const headerHeight =
+                        siteHeader
+                            ? siteHeader.offsetHeight
+                            : 0;
+
+
+                    const targetPosition =
+                        target.getBoundingClientRect()
+                            .top +
+                        window.scrollY -
+                        headerHeight;
+
+
+                    window.scrollTo({
+
+                        top:
+                            targetPosition,
+
+                        behavior:
+                            "smooth"
+
+                    });
+
+                }
+
+            }
+        );
+
+    });
+
+
+/* =====================================================
+   SIMPLE REVEAL ANIMATIONS
+===================================================== */
+
+const revealElements =
+    document.querySelectorAll(
+        ".service-card, .why-item, .capability, .about-panel, .testimonial-card"
+    );
+
+
+if (
+    revealElements.length &&
+    "IntersectionObserver" in window
+) {
+
+    const observer =
+        new IntersectionObserver(
+            (entries, observer) => {
+
+                entries.forEach(entry => {
+
+                    if (
+                        entry.isIntersecting
+                    ) {
+
+                        entry.target.classList.add(
+                            "revealed"
+                        );
+
+                        observer.unobserve(
+                            entry.target
+                        );
+
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.12
+            }
+        );
+
+
+    revealElements.forEach(
+        element => {
+
+            element.classList.add(
+                "reveal"
             );
 
-
-            const spans =
-                menuToggle.querySelectorAll(
-                    "span"
-                );
-
-
-            spans[0].style.transform = "none";
-
-            spans[1].style.opacity = "1";
-
-            spans[2].style.transform = "none";
-
-        }
-
-    }
-);
-
-
-
-/* =========================================
-   SERVICE CARD INTERACTION
-========================================= */
-
-const serviceCards =
-    document.querySelectorAll(
-        ".service-card"
-    );
-
-
-serviceCards.forEach(function (card) {
-
-    card.addEventListener(
-        "mouseenter",
-        function () {
-
-            this.style.zIndex = "2";
+            observer.observe(
+                element
+            );
 
         }
     );
 
-
-    card.addEventListener(
-        "mouseleave",
-        function () {
-
-            this.style.zIndex = "1";
-
-        }
-    );
-
-});
+}
 
 
-
-/* =========================================
-   PREVENT EMPTY LINKS
-========================================= */
-
-document.querySelectorAll(
-    'a[href="#"]'
-).forEach(function (link) {
-
-    link.addEventListener(
-        "click",
-        function (event) {
-
-            event.preventDefault();
-
-        }
-    );
-
-});
-```
-
-});
+/* =====================================================
+   END
+===================================================== */
