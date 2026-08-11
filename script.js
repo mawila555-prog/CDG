@@ -1,125 +1,243 @@
-```javascript
-/* =========================================================
+/* =========================================
    CREATIVE DEVELOPMENT GROUP
    WEBSITE JAVASCRIPT
-   ========================================================= */
+========================================= */
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
 
-    /* =====================================================
-       ELEMENTS
-       ===================================================== */
+    /* =========================================
+       MOBILE NAVIGATION
+    ========================================= */
 
     const menuToggle = document.getElementById("menuToggle");
-    const mainNav = document.getElementById("mainNav");
-    const navLinks = document.querySelectorAll("#mainNav a");
-    const contactForm = document.getElementById("contactForm");
+    const nav = document.getElementById("nav");
 
+    if (menuToggle && nav) {
 
-    /* =====================================================
-       MOBILE MENU
-       ===================================================== */
+        menuToggle.addEventListener("click", function () {
 
-    if (menuToggle && mainNav) {
-
-        menuToggle.addEventListener("click", () => {
-
-            const isOpen =
-                mainNav.classList.toggle("active");
+            const isOpen = nav.classList.toggle("active");
 
             menuToggle.setAttribute(
                 "aria-expanded",
                 isOpen ? "true" : "false"
             );
 
-            /* Change hamburger icon */
+            menuToggle.setAttribute(
+                "aria-label",
+                isOpen ? "Close navigation" : "Open navigation"
+            );
 
-            const icon =
-                menuToggle.querySelector("i");
-
-            if (icon) {
-
-                if (isOpen) {
-
-                    icon.classList.remove("fa-bars");
-
-                    icon.classList.add("fa-xmark");
-
-                } else {
-
-                    icon.classList.remove("fa-xmark");
-
-                    icon.classList.add("fa-bars");
-                }
-            }
+            menuToggle.textContent = isOpen ? "✕" : "☰";
 
         });
 
 
-        /* =================================================
-           CLOSE MOBILE MENU WHEN LINK IS CLICKED
-           ================================================= */
+        /* Close menu after clicking a navigation link */
 
-        navLinks.forEach((link) => {
+        const navLinks = nav.querySelectorAll("a");
 
-            link.addEventListener("click", () => {
+        navLinks.forEach(function (link) {
 
-                mainNav.classList.remove("active");
+            link.addEventListener("click", function () {
+
+                nav.classList.remove("active");
 
                 menuToggle.setAttribute(
                     "aria-expanded",
                     "false"
                 );
 
-                const icon =
-                    menuToggle.querySelector("i");
+                menuToggle.setAttribute(
+                    "aria-label",
+                    "Open navigation"
+                );
 
-                if (icon) {
-
-                    icon.classList.remove("fa-xmark");
-
-                    icon.classList.add("fa-bars");
-                }
+                menuToggle.textContent = "☰";
 
             });
 
         });
 
+    }
 
-        /* =================================================
-           CLOSE MENU WHEN CLICKING OUTSIDE
-           ================================================= */
 
-        document.addEventListener("click", (event) => {
 
-            const clickedInsideMenu =
-                mainNav.contains(event.target);
+    /* =========================================
+       DYNAMIC COPYRIGHT YEAR
+    ========================================= */
 
-            const clickedToggle =
-                menuToggle.contains(event.target);
+    const yearElement = document.getElementById("year");
 
-            if (
-                !clickedInsideMenu &&
-                !clickedToggle &&
-                mainNav.classList.contains("active")
-            ) {
+    if (yearElement) {
 
-                mainNav.classList.remove("active");
+        yearElement.textContent = new Date().getFullYear();
 
-                menuToggle.setAttribute(
-                    "aria-expanded",
-                    "false"
+    }
+
+
+
+    /* =========================================
+       WHATSAPP CONTACT FORM
+    ========================================= */
+
+    const contactForm = document.getElementById("contactForm");
+
+    if (contactForm) {
+
+        contactForm.addEventListener("submit", function (event) {
+
+            event.preventDefault();
+
+
+            /* Get form values */
+
+            const name =
+                document.getElementById("name").value.trim();
+
+            const phone =
+                document.getElementById("phone").value.trim();
+
+            const service =
+                document.getElementById("service").value;
+
+            const message =
+                document.getElementById("message").value.trim();
+
+
+            /* Basic validation */
+
+            if (!name || !phone || !service || !message) {
+
+                alert(
+                    "Please complete all fields before sending your enquiry."
                 );
 
-                const icon =
-                    menuToggle.querySelector("i");
+                return;
 
-                if (icon) {
+            }
 
-                    icon.classList.remove("fa-xmark");
 
-                    icon.classList.add("fa-bars");
-                }
+            /* =====================================
+               CREATE WHATSAPP MESSAGE
+            ====================================== */
+
+            const whatsappMessage =
+                "Hello Creative Development Group,%0A%0A" +
+
+                "I would like to request a quotation.%0A%0A" +
+
+                "Name: " +
+                encodeURIComponent(name) +
+
+                "%0A" +
+
+                "Contact Number: " +
+                encodeURIComponent(phone) +
+
+                "%0A" +
+
+                "Service Required: " +
+                encodeURIComponent(service) +
+
+                "%0A%0A" +
+
+                "Message:%0A" +
+                encodeURIComponent(message) +
+
+                "%0A%0A" +
+
+                "Thank you.";
+
+
+            /* =====================================
+               CREATIVE DEVELOPMENT GROUP
+               WHATSAPP NUMBER
+            ====================================== */
+
+            const whatsappNumber = "27722301683";
+
+
+            const whatsappURL =
+                "https://wa.me/" +
+                whatsappNumber +
+                "?text=" +
+                whatsappMessage;
+
+
+            /* Open WhatsApp */
+
+            window.open(
+                whatsappURL,
+                "_blank",
+                "noopener,noreferrer"
+            );
+
+
+            /* Reset form */
+
+            contactForm.reset();
+
+        });
+
+    }
+
+
+
+    /* =========================================
+       SMOOTH SCROLLING
+    ========================================= */
+
+    const anchorLinks =
+        document.querySelectorAll('a[href^="#"]');
+
+
+    anchorLinks.forEach(function (link) {
+
+        link.addEventListener("click", function (event) {
+
+            const targetID =
+                this.getAttribute("href");
+
+            if (
+                !targetID ||
+                targetID === "#"
+            ) {
+                return;
+            }
+
+
+            const target =
+                document.querySelector(targetID);
+
+
+            if (target) {
+
+                event.preventDefault();
+
+                const header =
+                    document.querySelector(".site-header");
+
+                const headerHeight =
+                    header
+                        ? header.offsetHeight
+                        : 0;
+
+
+                const targetPosition =
+                    target.getBoundingClientRect().top +
+                    window.pageYOffset -
+                    headerHeight;
+
+
+                window.scrollTo({
+
+                    top: targetPosition,
+
+                    behavior: "smooth"
+
+                });
+
             }
 
         });
@@ -127,395 +245,35 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =====================================================
-       DESKTOP / MOBILE RESPONSIVE MENU
-       Automatically resets menu when screen changes
-       ===================================================== */
 
-    const desktopBreakpoint = 700;
+    /* =========================================
+       CLOSE MOBILE MENU WHEN RESIZING
+    ========================================= */
 
-    window.addEventListener("resize", () => {
+    window.addEventListener("resize", function () {
 
-        if (window.innerWidth > desktopBreakpoint) {
+        if (
+            window.innerWidth > 768 &&
+            nav &&
+            menuToggle
+        ) {
 
-            if (mainNav) {
-                mainNav.classList.remove("active");
-            }
+            nav.classList.remove("active");
 
-            if (menuToggle) {
+            menuToggle.setAttribute(
+                "aria-expanded",
+                "false"
+            );
 
-                menuToggle.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
+            menuToggle.setAttribute(
+                "aria-label",
+                "Open navigation"
+            );
 
-                const icon =
-                    menuToggle.querySelector("i");
-
-                if (icon) {
-
-                    icon.classList.remove("fa-xmark");
-
-                    icon.classList.add("fa-bars");
-                }
-            }
+            menuToggle.textContent = "☰";
 
         }
 
     });
 
-
-    /* =====================================================
-       SMOOTH SCROLL
-       ===================================================== */
-
-    document.querySelectorAll('a[href^="#"]').forEach((link) => {
-
-        link.addEventListener("click", (event) => {
-
-            const targetId =
-                link.getAttribute("href");
-
-            if (
-                !targetId ||
-                targetId === "#"
-            ) {
-                return;
-            }
-
-            const target =
-                document.querySelector(targetId);
-
-            if (!target) {
-                return;
-            }
-
-            event.preventDefault();
-
-            const header =
-                document.querySelector(".site-header");
-
-            const headerHeight =
-                header
-                    ? header.offsetHeight
-                    : 0;
-
-            const targetPosition =
-                target.getBoundingClientRect().top +
-                window.pageYOffset -
-                headerHeight;
-
-            window.scrollTo({
-                top: targetPosition,
-                behavior: "smooth"
-            });
-
-        });
-
-    });
-
-
-    /* =====================================================
-       CONTACT FORM
-       ===================================================== */
-
-    if (contactForm) {
-
-        contactForm.addEventListener(
-            "submit",
-            (event) => {
-
-                event.preventDefault();
-
-
-                /* -----------------------------------------
-                   GET FORM VALUES
-                   ----------------------------------------- */
-
-                const name =
-                    contactForm.elements["name"]
-                        ?.value
-                        .trim();
-
-                const email =
-                    contactForm.elements["email"]
-                        ?.value
-                        .trim();
-
-                const service =
-                    contactForm.elements["service"]
-                        ?.value
-                        .trim();
-
-                const message =
-                    contactForm.elements["message"]
-                        ?.value
-                        .trim();
-
-
-                /* -----------------------------------------
-                   BASIC VALIDATION
-                   ----------------------------------------- */
-
-                if (!name) {
-
-                    alert(
-                        "Please enter your full name."
-                    );
-
-                    contactForm.elements["name"].focus();
-
-                    return;
-                }
-
-
-                if (!email) {
-
-                    alert(
-                        "Please enter your email address."
-                    );
-
-                    contactForm.elements["email"].focus();
-
-                    return;
-                }
-
-
-                /* Email validation */
-
-                const emailPattern =
-                    /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-                if (!emailPattern.test(email)) {
-
-                    alert(
-                        "Please enter a valid email address."
-                    );
-
-                    contactForm.elements["email"].focus();
-
-                    return;
-                }
-
-
-                if (!service) {
-
-                    alert(
-                        "Please select a service."
-                    );
-
-                    contactForm.elements["service"].focus();
-
-                    return;
-                }
-
-
-                if (!message) {
-
-                    alert(
-                        "Please enter a message."
-                    );
-
-                    contactForm.elements["message"].focus();
-
-                    return;
-                }
-
-
-                /* -----------------------------------------
-                   SUBMIT BUTTON
-                   ----------------------------------------- */
-
-                const submitButton =
-                    contactForm.querySelector(
-                        'button[type="submit"]'
-                    );
-
-                const originalText =
-                    submitButton
-                        ? submitButton.textContent
-                        : "Send Enquiry";
-
-
-                if (submitButton) {
-
-                    submitButton.disabled = true;
-
-                    submitButton.textContent =
-                        "Preparing...";
-                }
-
-
-                /* -----------------------------------------
-                   CREATE MAILTO
-                   
-                   IMPORTANT:
-                   Replace the email address below with
-                   your actual CDG business email.
-                   ----------------------------------------- */
-
-                const recipient =
-                    "YOUR-EMAIL@example.com";
-
-
-                const subject =
-                    encodeURIComponent(
-                        `Website Enquiry - ${service}`
-                    );
-
-
-                const body =
-                    encodeURIComponent(
-`Hello Creative Development Group,
-
-I would like to enquire about your services.
-
-Name:
-${name}
-
-Email:
-${email}
-
-Service Required:
-${service}
-
-Message:
-${message}
-
-Kind regards,
-${name}`
-                    );
-
-
-                /* -----------------------------------------
-                   OPEN EMAIL CLIENT
-                   ----------------------------------------- */
-
-                window.location.href =
-                    `mailto:${recipient}?subject=${subject}&body=${body}`;
-
-
-                /* -----------------------------------------
-                   RESET BUTTON
-                   ----------------------------------------- */
-
-                setTimeout(() => {
-
-                    if (submitButton) {
-
-                        submitButton.disabled = false;
-
-                        submitButton.textContent =
-                            originalText;
-                    }
-
-                }, 2000);
-
-            }
-        );
-
-    }
-
-
-    /* =====================================================
-       ACTIVE NAVIGATION
-       Highlights the current section while scrolling
-       ===================================================== */
-
-    const sections =
-        document.querySelectorAll(
-            "section[id]"
-        );
-
-    const desktopNavLinks =
-        document.querySelectorAll(
-            '#mainNav a[href^="#"]'
-        );
-
-
-    const updateActiveNavigation = () => {
-
-        let currentSection = "";
-
-        const scrollPosition =
-            window.scrollY +
-            120;
-
-
-        sections.forEach((section) => {
-
-            const sectionTop =
-                section.offsetTop;
-
-            const sectionHeight =
-                section.offsetHeight;
-
-            if (
-                scrollPosition >= sectionTop &&
-                scrollPosition <
-                    sectionTop + sectionHeight
-            ) {
-
-                currentSection =
-                    section.getAttribute("id");
-            }
-
-        });
-
-
-        desktopNavLinks.forEach((link) => {
-
-            link.classList.remove("active-link");
-
-            const href =
-                link.getAttribute("href");
-
-            if (
-                href === `#${currentSection}` &&
-                !link.classList.contains(
-                    "nav-quote"
-                )
-            ) {
-
-                link.classList.add(
-                    "active-link"
-                );
-            }
-
-        });
-
-    };
-
-
-    window.addEventListener(
-        "scroll",
-        updateActiveNavigation
-    );
-
-    updateActiveNavigation();
-
-
-    /* =====================================================
-       CURRENT YEAR
-       Automatically updates footer year
-       ===================================================== */
-
-    const footer =
-        document.querySelector(
-            ".footer-bottom"
-        );
-
-    if (footer) {
-
-        const currentYear =
-            new Date().getFullYear();
-
-        footer.innerHTML =
-            footer.innerHTML.replace(
-                "2019–2026",
-                `2019–${currentYear}`
-            );
-    }
-
 });
-```
