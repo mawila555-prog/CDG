@@ -1,293 +1,417 @@
-/* =====================================================
+/* =========================================================
    CREATIVE DEVELOPMENT GROUP
    WEBSITE JAVASCRIPT
-===================================================== */
+========================================================= */
 
 
-/* =====================================================
-   MOBILE NAVIGATION
-===================================================== */
+document.addEventListener("DOMContentLoaded", function () {
 
-const menuToggle = document.getElementById("menuToggle");
-const nav = document.getElementById("nav");
 
-if (menuToggle && nav) {
+    /* =====================================================
+       ELEMENTS
+    ====================================================== */
 
-    menuToggle.addEventListener("click", () => {
+    const header = document.getElementById("siteHeader");
 
-        const isOpen =
-            nav.classList.toggle("active");
+    const menuToggle = document.getElementById("menuToggle");
 
-        menuToggle.setAttribute(
-            "aria-expanded",
-            isOpen
+    const nav = document.getElementById("nav");
+
+    const backToTop = document.getElementById("backToTop");
+
+    const contactForm = document.getElementById("contactForm");
+
+    const serviceSelect = document.getElementById("service");
+
+    const yearElement = document.getElementById("year");
+
+
+    /* =====================================================
+       CURRENT YEAR
+    ====================================================== */
+
+    if (yearElement) {
+
+        yearElement.textContent =
+            new Date().getFullYear();
+
+    }
+
+
+    /* =====================================================
+       MOBILE MENU
+    ====================================================== */
+
+    if (menuToggle && nav) {
+
+        menuToggle.addEventListener(
+            "click",
+            function () {
+
+                const isOpen =
+                    nav.classList.toggle("active");
+
+                menuToggle.classList.toggle(
+                    "active",
+                    isOpen
+                );
+
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    isOpen
+                        ? "true"
+                        : "false"
+                );
+
+                menuToggle.setAttribute(
+                    "aria-label",
+                    isOpen
+                        ? "Close navigation menu"
+                        : "Open navigation menu"
+                );
+
+            }
+        );
+
+
+        /* CLOSE MENU AFTER CLICKING LINK */
+
+        const navigationLinks =
+            nav.querySelectorAll("a");
+
+        navigationLinks.forEach(function (link) {
+
+            link.addEventListener(
+                "click",
+                function () {
+
+                    nav.classList.remove("active");
+
+                    menuToggle.classList.remove(
+                        "active"
+                    );
+
+                    menuToggle.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+                    menuToggle.setAttribute(
+                        "aria-label",
+                        "Open navigation menu"
+                    );
+
+                }
+            );
+
+        });
+
+
+        /* CLOSE MOBILE MENU WHEN RESIZING TO PC */
+
+        window.addEventListener(
+            "resize",
+            function () {
+
+                if (window.innerWidth > 900) {
+
+                    nav.classList.remove("active");
+
+                    menuToggle.classList.remove(
+                        "active"
+                    );
+
+                    menuToggle.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+                }
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       HEADER SCROLL EFFECT
+    ====================================================== */
+
+    function handleScroll() {
+
+        if (header) {
+
+            if (window.scrollY > 20) {
+
+                header.classList.add("scrolled");
+
+            } else {
+
+                header.classList.remove("scrolled");
+
+            }
+
+        }
+
+
+        /* BACK TO TOP */
+
+        if (backToTop) {
+
+            if (window.scrollY > 600) {
+
+                backToTop.classList.add("show");
+
+            } else {
+
+                backToTop.classList.remove("show");
+
+            }
+
+        }
+
+    }
+
+
+    window.addEventListener(
+        "scroll",
+        handleScroll,
+        { passive: true }
+    );
+
+
+    handleScroll();
+
+
+    /* =====================================================
+       BACK TO TOP
+    ====================================================== */
+
+    if (backToTop) {
+
+        backToTop.addEventListener(
+            "click",
+            function () {
+
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       SERVICE CARD QUOTATION SELECTION
+    ====================================================== */
+
+    const serviceLinks =
+        document.querySelectorAll(
+            "[data-service]"
+        );
+
+
+    serviceLinks.forEach(function (link) {
+
+        link.addEventListener(
+            "click",
+            function () {
+
+                const selectedService =
+                    link.getAttribute(
+                        "data-service"
+                    );
+
+                if (
+                    selectedService &&
+                    serviceSelect
+                ) {
+
+                    serviceSelect.value =
+                        selectedService;
+
+                }
+
+            }
         );
 
     });
 
 
-    /* Close menu when navigation link is clicked */
+    /* =====================================================
+       CONTACT FORM
+       SEND VIA WHATSAPP
+    ====================================================== */
 
-    const navLinks =
-        nav.querySelectorAll("a");
+    if (contactForm) {
 
-    navLinks.forEach(link => {
+        contactForm.addEventListener(
+            "submit",
+            function (event) {
 
-        link.addEventListener("click", () => {
-
-            nav.classList.remove("active");
-
-            menuToggle.setAttribute(
-                "aria-expanded",
-                "false"
-            );
-
-        });
-
-    });
-
-}
+                event.preventDefault();
 
 
-/* =====================================================
-   HEADER SCROLL EFFECT
-===================================================== */
+                /* GET VALUES */
 
-const siteHeader =
-    document.getElementById("siteHeader");
+                const name =
+                    document
+                        .getElementById("name")
+                        .value
+                        .trim();
 
-function updateHeader() {
+                const phone =
+                    document
+                        .getElementById("phone")
+                        .value
+                        .trim();
 
-    if (!siteHeader) return;
+                const service =
+                    document
+                        .getElementById("service")
+                        .value;
 
-    if (window.scrollY > 30) {
+                const message =
+                    document
+                        .getElementById("message")
+                        .value
+                        .trim();
 
-        siteHeader.classList.add("scrolled");
 
-    } else {
+                /* BASIC VALIDATION */
 
-        siteHeader.classList.remove("scrolled");
+                if (
+                    !name ||
+                    !phone ||
+                    !service ||
+                    !message
+                ) {
+
+                    alert(
+                        "Please complete all fields before sending your enquiry."
+                    );
+
+                    return;
+
+                }
+
+
+                /* BUSINESS NUMBER */
+
+                const businessNumber =
+                    "27722301683";
+
+
+                /* WHATSAPP MESSAGE */
+
+                const whatsappMessage =
+`Hello Creative Development Group,
+
+I would like to request a quotation.
+
+Name: ${name}
+Contact Number: ${phone}
+Service Required: ${service}
+
+Requirements:
+${message}
+
+Thank you.`;
+
+
+                /* CREATE WHATSAPP URL */
+
+                const whatsappURL =
+                    "https://wa.me/" +
+                    businessNumber +
+                    "?text=" +
+                    encodeURIComponent(
+                        whatsappMessage
+                    );
+
+
+                /* OPEN WHATSAPP */
+
+                window.open(
+                    whatsappURL,
+                    "_blank",
+                    "noopener,noreferrer"
+                );
+
+            }
+        );
 
     }
 
-}
 
-window.addEventListener(
-    "scroll",
-    updateHeader
-);
+    /* =====================================================
+       SMOOTH SCROLL FOR INTERNAL LINKS
+    ====================================================== */
 
-updateHeader();
-
-
-/* =====================================================
-   CURRENT YEAR
-===================================================== */
-
-const yearElement =
-    document.getElementById("year");
-
-if (yearElement) {
-
-    yearElement.textContent =
-        new Date().getFullYear();
-
-}
+    const internalLinks =
+        document.querySelectorAll(
+            'a[href^="#"]'
+        );
 
 
-/* =====================================================
-   CONTACT FORM → WHATSAPP
-===================================================== */
+    internalLinks.forEach(function (link) {
 
-const contactForm =
-    document.getElementById("contactForm");
-
-
-if (contactForm) {
-
-    contactForm.addEventListener(
-        "submit",
-        function(event) {
-
-            event.preventDefault();
-
-
-            const name =
-                document.getElementById("name")
-                    .value.trim();
-
-            const phone =
-                document.getElementById("phone")
-                    .value.trim();
-
-            const service =
-                document.getElementById("service")
-                    .value;
-
-            const message =
-                document.getElementById("message")
-                    .value.trim();
-
-
-            if (
-                !name ||
-                !phone ||
-                !service ||
-                !message
-            ) {
-
-                alert(
-                    "Please complete all fields before sending your enquiry."
-                );
-
-                return;
-
-            }
-
-
-            const whatsappMessage =
-
-                `Hello Creative Development Group,
-
-` +
-                `I would like to make an enquiry.
-
-` +
-                `Name: ${name}
-
-` +
-                `Contact Number: ${phone}
-
-` +
-                `Service Required: ${service}
-
-` +
-                `Message:
-${message}
-
-` +
-                `Thank you.`;
-
-
-            const whatsappURL =
-
-                "https://wa.me/27722301683?text=" +
-                encodeURIComponent(
-                    whatsappMessage
-                );
-
-
-            window.open(
-                whatsappURL,
-                "_blank"
-            );
-
-        }
-    );
-
-}
-
-
-/* =====================================================
-   BACK TO TOP
-===================================================== */
-
-const backToTop =
-    document.getElementById("backToTop");
-
-
-if (backToTop) {
-
-    window.addEventListener(
-        "scroll",
-        () => {
-
-            if (window.scrollY > 500) {
-
-                backToTop.classList.add(
-                    "visible"
-                );
-
-            } else {
-
-                backToTop.classList.remove(
-                    "visible"
-                );
-
-            }
-
-        }
-    );
-
-
-    backToTop.addEventListener(
-        "click",
-        () => {
-
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
-
-        }
-    );
-
-}
-
-
-/* =====================================================
-   SMOOTH ANCHOR SCROLL
-===================================================== */
-
-document
-    .querySelectorAll('a[href^="#"]')
-    .forEach(anchor => {
-
-        anchor.addEventListener(
+        link.addEventListener(
             "click",
-            function(event) {
+            function (event) {
 
                 const targetID =
-                    this.getAttribute("href");
+                    link.getAttribute("href");
+
 
                 if (
                     !targetID ||
                     targetID === "#"
                 ) {
+
                     return;
+
                 }
 
 
-                const target =
+                const targetElement =
                     document.querySelector(
                         targetID
                     );
 
 
-                if (target) {
+                if (targetElement) {
 
                     event.preventDefault();
 
+
                     const headerHeight =
-                        siteHeader
-                            ? siteHeader.offsetHeight
+                        header
+                            ? header.offsetHeight
                             : 0;
 
 
                     const targetPosition =
-                        target.getBoundingClientRect()
-                            .top +
-                        window.scrollY -
-                        headerHeight;
+                        targetElement
+                            .getBoundingClientRect()
+                            .top
+                        +
+                        window.pageYOffset
+                        -
+                        headerHeight
+                        -
+                        10;
 
 
                     window.scrollTo({
 
-                        top:
-                            targetPosition,
+                        top: targetPosition,
 
-                        behavior:
-                            "smooth"
+                        behavior: "smooth"
 
                     });
 
@@ -299,67 +423,113 @@ document
     });
 
 
-/* =====================================================
-   SIMPLE REVEAL ANIMATIONS
-===================================================== */
+    /* =====================================================
+       ACTIVE NAVIGATION LINK WHILE SCROLLING
+    ====================================================== */
 
-const revealElements =
-    document.querySelectorAll(
-        ".service-card, .why-item, .capability, .about-panel, .testimonial-card"
-    );
-
-
-if (
-    revealElements.length &&
-    "IntersectionObserver" in window
-) {
-
-    const observer =
-        new IntersectionObserver(
-            (entries, observer) => {
-
-                entries.forEach(entry => {
-
-                    if (
-                        entry.isIntersecting
-                    ) {
-
-                        entry.target.classList.add(
-                            "revealed"
-                        );
-
-                        observer.unobserve(
-                            entry.target
-                        );
-
-                    }
-
-                });
-
-            },
-            {
-                threshold: 0.12
-            }
+    const sections =
+        document.querySelectorAll(
+            "main section[id]"
         );
 
 
-    revealElements.forEach(
-        element => {
+    const navLinks =
+        document.querySelectorAll(
+            '.nav a[href^="#"]'
+        );
 
-            element.classList.add(
-                "reveal"
-            );
 
-            observer.observe(
-                element
-            );
+    function updateActiveNavigation() {
+
+        let currentSection = "";
+
+        const scrollPosition =
+            window.scrollY + 180;
+
+
+        sections.forEach(function (section) {
+
+            const sectionTop =
+                section.offsetTop;
+
+            const sectionHeight =
+                section.offsetHeight;
+
+
+            if (
+                scrollPosition >= sectionTop &&
+                scrollPosition <
+                sectionTop + sectionHeight
+            ) {
+
+                currentSection =
+                    section.getAttribute("id");
+
+            }
+
+        });
+
+
+        navLinks.forEach(function (link) {
+
+            link.classList.remove("active-link");
+
+
+            if (
+                link.getAttribute("href") ===
+                "#" + currentSection
+            ) {
+
+                link.classList.add(
+                    "active-link"
+                );
+
+            }
+
+        });
+
+    }
+
+
+    window.addEventListener(
+        "scroll",
+        updateActiveNavigation,
+        { passive: true }
+    );
+
+
+    updateActiveNavigation();
+
+
+    /* =====================================================
+       ESCAPE KEY CLOSES MOBILE MENU
+    ====================================================== */
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (
+                event.key === "Escape" &&
+                nav &&
+                menuToggle
+            ) {
+
+                nav.classList.remove("active");
+
+                menuToggle.classList.remove(
+                    "active"
+                );
+
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+            }
 
         }
     );
 
-}
 
-
-/* =====================================================
-   END
-===================================================== */
+});
