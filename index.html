@@ -1,416 +1,532 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
 
-```
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-<meta name="description"
-      content="Creative Development Group — General Trading & Consulting Solutions in Cape Town. Founded in 2018. Professional maintenance, transportation, plumbing, cleaning, landscaping, supply and marketing services.">
+    <meta name="description"
+          content="Creative Development Group — General Trading & Consulting Solutions. Professional maintenance, transportation, plumbing, cleaning, landscaping, supply and marketing services.">
 
-<meta name="keywords"
-      content="Creative Development Group, Cape Town, general trading, consulting, maintenance, plumbing, removals, cleaning, landscaping, garden maintenance, supply, marketing">
+    <meta name="keywords"
+          content="Creative Development Group, general trading, consulting, maintenance, plumbing, removals, cleaning, landscaping, supply, marketing">
 
-<meta name="author"
-      content="Creative Development Group">
+    <meta name="author"
+          content="Creative Development Group">
 
-<meta name="theme-color"
-      content="#063B63">
+    <meta name="theme-color"
+          content="#063B63">
 
-<meta name="robots"
-      content="index, follow">
+    <meta name="robots"
+          content="index, follow">
 
+    <meta property="og:title"
+          content="Creative Development Group | General Trading & Consulting Solutions">
 
-<!-- Open Graph -->
+    <meta property="og:description"
+          content="Professional general trading and consulting solutions. Here to better your future.">
 
-<meta property="og:title"
-      content="Creative Development Group | Cape Town">
+    <meta property="og:type"
+          content="website">
 
-<meta property="og:description"
-      content="General Trading & Consulting Solutions. Founded in 2018. Here to better your future.">
-
-<meta property="og:type"
-      content="website">
-
-
-<title>
-    Creative Development Group | Cape Town
-</title>
+    <title>
+        Creative Development Group | General Trading & Consulting Solutions
+    </title>
 
 
-<!-- Google Fonts -->
+    <!-- Google Fonts -->
 
-<link rel="preconnect"
-      href="https://fonts.googleapis.com">
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
 
-<link rel="preconnect"
-      href="https://fonts.gstatic.com"
-      crossorigin>
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Montserrat:wght@500;600;700;800;900&display=swap"
-      rel="stylesheet">
-
-
-<!-- Icons -->
-
-<link rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@600;700;800;900&display=swap"
+          rel="stylesheet">
 
 
-<!-- Website CSS -->
+    <!-- Website CSS -->
 
-<link rel="stylesheet"
-      href="styles.css">
-```
+    <link rel="stylesheet"
+          href="styles.css">
 
 </head>
 
+
 <body>
 
-<!-- =========================================
+
+<!-- =====================================================
      HEADER
-========================================= -->
+===================================================== -->
 
-<header class="site-header">
+<header class="site-header"
+        id="siteHeader">
 
-```
-<div class="container nav-container">
-
-    <a href="#home"
-       class="logo"
-       aria-label="Creative Development Group Home">
-
-        <img src="CDG.jpg"
-             alt="Creative Development Group"
-             class="company-logo">
-
-    </a>
+    <div class="container nav-container">
 
 
-    <button class="menu-toggle"
-            id="menuToggle"
-            aria-label="Open navigation"
-            aria-expanded="false"
-            type="button">
+        <!-- Company Logo -->
 
-        <span></span>
-        <span></span>
-        <span></span>
+        <a href="#home"
+           class="logo">
 
-    </button>
-
-
-    <nav class="nav"
-         id="nav">
-
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#work">Our Work</a>
-        <a href="#contact">Contact</a>
-
-        <a href="#quote"
-           class="nav-quote">
-
-            GET A QUOTE
+            <img
+                src="CDG.jpg"
+                alt="Creative Development Group"
+                class="company-logo">
 
         </a>
 
-    </nav>
 
-</div>
-```
+        <!-- Mobile Menu -->
+
+        <button
+            class="menu-toggle"
+            id="menuToggle"
+            aria-label="Open navigation"
+            aria-expanded="false">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </button>
+
+
+        <!-- Navigation -->
+
+        <nav class="nav"
+             id="nav">
+
+            <a href="#home">
+                Home
+            </a>
+
+            <a href="#about">
+                About
+            </a>
+
+            <a href="#services">
+                Services
+            </a>
+
+            <a href="#capabilities">
+                Capabilities
+            </a>
+
+            <a href="#testimonials">
+                Testimonials
+            </a>
+
+            <a href="#contact">
+                Contact
+            </a>
+
+            <a href="#quote"
+               class="nav-quote">
+
+                Free Quotation
+
+            </a>
+
+        </nav>
+
+    </div>
 
 </header>
 
+
+
 <main>
 
-<!-- =========================================
+
+<!-- =====================================================
      HERO
-========================================= -->
+===================================================== -->
 
 <section class="hero"
          id="home">
 
-```
-<div class="hero-overlay"></div>
+    <div class="hero-background"></div>
 
-<div class="container hero-content">
-
-    <div class="hero-copy">
-
-        <div class="hero-label">
-            CAPE TOWN • SOUTH AFRICA
-        </div>
+    <div class="container hero-grid">
 
 
-        <p class="hero-kicker">
-            GENERAL TRADING & CONSULTING SOLUTIONS
-        </p>
+        <!-- Hero Content -->
+
+        <div class="hero-content">
+
+            <div class="hero-eyebrow">
+
+                <span></span>
+
+                GENERAL TRADING & CONSULTING SOLUTIONS
+
+            </div>
 
 
-        <h1>
-            HERE TO
-            <span>BETTER</span>
-            YOUR FUTURE.
-        </h1>
+            <h1>
+
+                HERE TO
+                <span>BETTER</span>
+                YOUR FUTURE.
+
+            </h1>
 
 
-        <p class="hero-description">
+            <p class="hero-description">
 
-            Creative Development Group provides
-            practical, professional and dependable
-            solutions for residential, commercial,
-            private and public-sector clients.
+                Creative Development Group provides practical,
+                dependable and professional solutions for
+                residential, commercial, private and
+                public-sector requirements.
 
-        </p>
-
-
-        <div class="hero-buttons">
-
-            <a href="#quote"
-               class="btn btn-primary">
-
-                <i class="fa-solid fa-file-signature"></i>
-                GET A FREE QUOTATION
-
-            </a>
+            </p>
 
 
-            <a href="https://wa.me/27722301683"
-               target="_blank"
-               rel="noopener noreferrer"
-               class="btn btn-whatsapp">
+            <div class="hero-buttons">
 
-                <i class="fa-brands fa-whatsapp"></i>
-                WHATSAPP US
+                <a href="#quote"
+                   class="btn btn-primary">
 
-            </a>
+                    Request a Free Quotation
 
-        </div>
+                </a>
 
 
-        <div class="hero-trust">
+                <a href="https://wa.me/27722301683"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="btn btn-light-outline">
 
-            <span>
-                <i class="fa-solid fa-calendar-check"></i>
-                Founded in 2018
-            </span>
+                    WhatsApp Us
 
-            <span>
-                <i class="fa-solid fa-location-dot"></i>
-                Cape Town
-            </span>
+                </a>
 
-            <span>
-                <i class="fa-solid fa-shield-halved"></i>
-                Professional Solutions
-            </span>
-
-        </div>
-
-    </div>
+            </div>
 
 
-    <div class="hero-card">
+            <div class="hero-contact">
 
-        <div class="hero-card-top">
+                <div class="hero-contact-item">
 
-            <span class="hero-card-label">
-                WHAT WE DO
-            </span>
+                    <span class="contact-symbol">
+                        ☎
+                    </span>
 
-            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    <div>
+                        <small>
+                            CALL US
+                        </small>
 
-        </div>
+                        <strong>
+                            072 230 1683
+                        </strong>
+                    </div>
 
-
-        <h3>
-            Solutions built around your needs.
-        </h3>
-
-
-        <p>
-            From property maintenance and plumbing
-            to transportation, cleaning, landscaping,
-            supply and marketing.
-        </p>
-
-
-        <div class="hero-services">
-
-            <span>Maintenance</span>
-            <span>Plumbing</span>
-            <span>Transportation</span>
-            <span>Cleaning</span>
-            <span>Landscaping</span>
-            <span>Supply</span>
-            <span>Marketing</span>
-
-        </div>
-
-    </div>
-
-</div>
-```
-
-</section>
-
-<!-- =========================================
-     TRUST STRIP
-========================================= -->
-
-<section class="trust-strip">
-
-```
-<div class="container trust-grid">
-
-    <div>
-        <i class="fa-solid fa-calendar"></i>
-        <strong>Founded in 2018</strong>
-        <span>Established business</span>
-    </div>
-
-    <div>
-        <i class="fa-solid fa-location-dot"></i>
-        <strong>Cape Town</strong>
-        <span>Proudly serving our community</span>
-    </div>
-
-    <div>
-        <i class="fa-solid fa-briefcase"></i>
-        <strong>Multiple Services</strong>
-        <span>One trusted business</span>
-    </div>
-
-    <div>
-        <i class="fa-solid fa-handshake"></i>
-        <strong>Client Focused</strong>
-        <span>Solutions around your needs</span>
-    </div>
-
-</div>
-```
-
-</section>
-
-<!-- =========================================
-     ABOUT
-========================================= -->
-
-<section class="section"
-         id="about">
-
-```
-<div class="container">
-
-    <div class="about-grid">
-
-
-        <div class="about-visual">
-
-            <div class="about-image-placeholder">
-
-                <div class="placeholder-icon">
-                    <i class="fa-solid fa-building"></i>
                 </div>
 
-                <span>
+
+                <div class="hero-contact-divider"></div>
+
+
+                <div class="hero-contact-item">
+
+                    <span class="contact-symbol">
+                        ✓
+                    </span>
+
+                    <div>
+                        <small>
+                            ESTABLISHED
+                        </small>
+
+                        <strong>
+                            2018
+                        </strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- Hero Business Panel -->
+
+        <div class="hero-business-card">
+
+            <div class="business-card-top">
+
+                <span class="business-card-label">
                     CREATIVE DEVELOPMENT GROUP
                 </span>
 
-                <strong>
+                <span class="business-card-year">
                     EST. 2018
-                </strong>
-
-                <small>
-                    Cape Town • South Africa
-                </small>
+                </span>
 
             </div>
 
 
-            <div class="established-badge">
-
-                <strong>2018</strong>
-                <span>ESTABLISHED</span>
-
-            </div>
-
-        </div>
-
-
-        <div class="about-content">
-
-            <div class="eyebrow">
-                ABOUT CREATIVE DEVELOPMENT GROUP
-            </div>
+            <div class="business-card-line"></div>
 
 
             <h2>
-                PROFESSIONAL
-                <span>SOLUTIONS.</span>
+                Professional solutions.
+                <span>One trusted partner.</span>
             </h2>
 
 
-            <p class="large">
+            <p>
 
-                Creative Development Group is a
-                Cape Town-based general trading and
-                consulting solutions company founded
-                in 2018.
+                A versatile range of services designed
+                to support homes, businesses and
+                organisations.
 
             </p>
 
+
+            <div class="business-services">
+
+                <div>
+                    <span>01</span>
+                    Maintenance
+                </div>
+
+                <div>
+                    <span>02</span>
+                    Transportation & Removals
+                </div>
+
+                <div>
+                    <span>03</span>
+                    Plumbing
+                </div>
+
+                <div>
+                    <span>04</span>
+                    Cleaning
+                </div>
+
+                <div>
+                    <span>05</span>
+                    Landscaping
+                </div>
+
+                <div>
+                    <span>06</span>
+                    Supply & Marketing
+                </div>
+
+            </div>
+
+
+            <a href="#services"
+               class="business-card-link">
+
+                Explore Our Services
+                <span>→</span>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     BUSINESS INTRODUCTION
+===================================================== -->
+
+<section class="business-intro">
+
+    <div class="container business-intro-grid">
+
+
+        <div>
+
+            <span class="section-label">
+                CREATIVE DEVELOPMENT GROUP
+            </span>
+
+            <h2>
+                A BUSINESS BUILT AROUND
+                <span>YOUR NEEDS.</span>
+            </h2>
+
+        </div>
+
+
+        <div>
 
             <p>
 
-                We provide practical services to
-                residential, commercial, private and
-                public-sector clients. Our goal is to
-                make it easier for clients to access
-                dependable solutions through one
-                trusted business.
+                We provide a broad range of general trading
+                and consulting solutions, helping clients
+                access practical services through one
+                professional business.
 
             </p>
 
+            <a href="#about"
+               class="text-link">
 
-            <p>
+                Learn More About Us
+                <span>→</span>
 
-                From maintenance and plumbing to
-                transportation, cleaning, landscaping,
-                supply and marketing, our approach is
-                built around reliability, professionalism
-                and long-term client relationships.
+            </a>
 
-            </p>
+        </div>
+
+    </div>
+
+</section>
 
 
-            <div class="about-points">
 
-                <div>
-                    <i class="fa-solid fa-circle-check"></i>
-                    <span>Professional approach</span>
+<!-- =====================================================
+     ABOUT
+===================================================== -->
+
+<section class="section about-section"
+         id="about">
+
+    <div class="container">
+
+
+        <div class="section-heading">
+
+            <span class="section-label">
+                ABOUT THE COMPANY
+            </span>
+
+            <h2>
+                PROFESSIONAL.
+                <span>PRACTICAL.</span>
+                DEPENDABLE.
+            </h2>
+
+        </div>
+
+
+        <div class="about-grid">
+
+
+            <div class="about-content">
+
+                <p class="lead">
+
+                    Creative Development Group is a
+                    general trading and consulting solutions
+                    company providing services to private,
+                    residential, commercial and
+                    public-sector clients.
+
+                </p>
+
+
+                <p>
+
+                    Our service offering covers property
+                    maintenance, transportation and
+                    removals, plumbing, residential and
+                    corporate cleaning, landscaping,
+                    garden maintenance, supply and
+                    marketing.
+
+                </p>
+
+
+                <p>
+
+                    We believe that clients should have
+                    access to practical solutions delivered
+                    with professionalism, reliability and
+                    attention to their requirements.
+
+                </p>
+
+
+                <a href="#contact"
+                   class="btn btn-primary">
+
+                    Talk To Our Team
+
+                </a>
+
+            </div>
+
+
+            <div class="about-panel">
+
+
+                <div class="about-panel-header">
+
+                    <span>
+                        OUR FOUNDATION
+                    </span>
+
+                    <div class="red-line"></div>
+
                 </div>
 
-                <div>
-                    <i class="fa-solid fa-circle-check"></i>
-                    <span>Practical solutions</span>
+
+                <div class="founded">
+
+                    <strong>
+                        2018
+                    </strong>
+
+                    <span>
+                        Founded
+                    </span>
+
                 </div>
 
-                <div>
-                    <i class="fa-solid fa-circle-check"></i>
-                    <span>Client-focused service</span>
-                </div>
 
-                <div>
-                    <i class="fa-solid fa-circle-check"></i>
-                    <span>Multiple service solutions</span>
+                <p>
+
+                    Building relationships through
+                    practical service and professional
+                    solutions.
+
+                </p>
+
+
+                <div class="about-values">
+
+                    <div>
+                        <span>✓</span>
+                        Professional Service
+                    </div>
+
+                    <div>
+                        <span>✓</span>
+                        Practical Solutions
+                    </div>
+
+                    <div>
+                        <span>✓</span>
+                        Client Focused
+                    </div>
+
+                    <div>
+                        <span>✓</span>
+                        Reliable Support
+                    </div>
+
                 </div>
 
             </div>
@@ -419,861 +535,505 @@
 
     </div>
 
-</div>
-```
-
 </section>
 
-<!-- =========================================
-     SERVICES
-========================================= -->
 
-<section class="section section-light"
+
+<!-- =====================================================
+     SERVICES
+===================================================== -->
+
+<section class="section services-section"
          id="services">
 
-```
-<div class="container">
+    <div class="container">
 
 
-    <div class="section-heading centered">
+        <div class="section-heading centered">
 
-        <div class="eyebrow">
-            WHAT WE DO
-        </div>
+            <span class="section-label">
+                WHAT WE DO
+            </span>
 
-        <h2>
-            OUR
-            <span>SERVICES.</span>
-        </h2>
-
-        <p>
-            Practical and professional services
-            designed around the needs of individuals,
-            businesses and organisations.
-        </p>
-
-    </div>
-
-
-    <div class="service-grid">
-
-
-        <article class="service-card">
-
-            <div class="service-top">
-                <span>01</span>
-                <i class="fa-solid fa-screwdriver-wrench"></i>
-            </div>
-
-            <h3>Maintenance</h3>
+            <h2>
+                OUR
+                <span>SERVICES.</span>
+            </h2>
 
             <p>
-                General maintenance solutions for
-                residential and business requirements.
-            </p>
 
-            <a href="#quote">
-                Request a quote
-                <i class="fa-solid fa-arrow-right"></i>
-            </a>
+                Comprehensive service solutions for
+                residential, commercial, private and
+                public-sector requirements.
 
-        </article>
-
-
-        <article class="service-card">
-
-            <div class="service-top">
-                <span>02</span>
-                <i class="fa-solid fa-truck"></i>
-            </div>
-
-            <h3>Transportation & Removals</h3>
-
-            <p>
-                Reliable transportation and removal
-                solutions for moving and logistical
-                requirements.
-            </p>
-
-            <a href="#quote">
-                Request a quote
-                <i class="fa-solid fa-arrow-right"></i>
-            </a>
-
-        </article>
-
-
-        <article class="service-card">
-
-            <div class="service-top">
-                <span>03</span>
-                <i class="fa-solid fa-faucet-drip"></i>
-            </div>
-
-            <h3>Plumbing</h3>
-
-            <p>
-                Plumbing support for residential
-                and commercial requirements.
-            </p>
-
-            <a href="#quote">
-                Request a quote
-                <i class="fa-solid fa-arrow-right"></i>
-            </a>
-
-        </article>
-
-
-        <article class="service-card">
-
-            <div class="service-top">
-                <span>04</span>
-                <i class="fa-solid fa-broom"></i>
-            </div>
-
-            <h3>Residential & Corporate Cleaning</h3>
-
-            <p>
-                Professional cleaning solutions
-                tailored to residential and
-                corporate environments.
-            </p>
-
-            <a href="#quote">
-                Request a quote
-                <i class="fa-solid fa-arrow-right"></i>
-            </a>
-
-        </article>
-
-
-        <article class="service-card">
-
-            <div class="service-top">
-                <span>05</span>
-                <i class="fa-solid fa-leaf"></i>
-            </div>
-
-            <h3>Landscaping & Garden Maintenance</h3>
-
-            <p>
-                Landscaping and garden maintenance
-                solutions to keep outdoor spaces
-                clean, functional and presentable.
-            </p>
-
-            <a href="#quote">
-                Request a quote
-                <i class="fa-solid fa-arrow-right"></i>
-            </a>
-
-        </article>
-
-
-        <article class="service-card">
-
-            <div class="service-top">
-                <span>06</span>
-                <i class="fa-solid fa-boxes-stacked"></i>
-            </div>
-
-            <h3>Supply</h3>
-
-            <p>
-                Supply solutions supporting private
-                and public-sector requirements.
-            </p>
-
-            <a href="#quote">
-                Request a quote
-                <i class="fa-solid fa-arrow-right"></i>
-            </a>
-
-        </article>
-
-
-        <article class="service-card">
-
-            <div class="service-top">
-                <span>07</span>
-                <i class="fa-solid fa-chart-line"></i>
-            </div>
-
-            <h3>Marketing</h3>
-
-            <p>
-                Marketing solutions designed to help
-                businesses improve their visibility
-                and reach.
-            </p>
-
-            <a href="#quote">
-                Request a quote
-                <i class="fa-solid fa-arrow-right"></i>
-            </a>
-
-        </article>
-
-
-    </div>
-
-</div>
-```
-
-</section>
-
-<!-- =========================================
-     OUR APPROACH
-========================================= -->
-
-<section class="section approach-section">
-
-```
-<div class="container">
-
-
-    <div class="section-heading centered">
-
-        <div class="eyebrow">
-            OUR APPROACH
-        </div>
-
-        <h2>
-            SIMPLE.
-            <span>PROFESSIONAL.</span>
-        </h2>
-
-        <p>
-            We focus on understanding what you need,
-            finding a practical solution and delivering
-            professional service.
-        </p>
-
-    </div>
-
-
-    <div class="approach-grid">
-
-
-        <div class="approach-card">
-
-            <div class="approach-number">
-                01
-            </div>
-
-            <div class="approach-icon">
-                <i class="fa-solid fa-comments"></i>
-            </div>
-
-            <h3>
-                Understand
-            </h3>
-
-            <p>
-                We listen to your requirements and
-                understand the work involved.
             </p>
 
         </div>
 
 
-        <div class="approach-card">
-
-            <div class="approach-number">
-                02
-            </div>
-
-            <div class="approach-icon">
-                <i class="fa-solid fa-clipboard-list"></i>
-            </div>
-
-            <h3>
-                Plan
-            </h3>
-
-            <p>
-                We identify a practical solution
-                suited to your requirements.
-            </p>
-
-        </div>
+        <div class="service-grid">
 
 
-        <div class="approach-card">
+            <article class="service-card">
 
-            <div class="approach-number">
-                03
-            </div>
+                <div class="service-top">
 
-            <div class="approach-icon">
-                <i class="fa-solid fa-gears"></i>
-            </div>
+                    <span class="service-number">
+                        01
+                    </span>
 
-            <h3>
-                Deliver
-            </h3>
+                    <span class="service-icon">
+                        ⚒
+                    </span>
 
-            <p>
-                We focus on professional service
-                and getting the job done.
-            </p>
-
-        </div>
-
-
-        <div class="approach-card">
-
-            <div class="approach-number">
-                04
-            </div>
-
-            <div class="approach-icon">
-                <i class="fa-solid fa-handshake"></i>
-            </div>
-
-            <h3>
-                Support
-            </h3>
-
-            <p>
-                We aim to build lasting relationships
-                with our clients.
-            </p>
-
-        </div>
-
-
-    </div>
-
-</div>
-```
-
-</section>
-
-<!-- =========================================
-     OUR WORK
-========================================= -->
-
-<section class="section section-light"
-         id="work">
-
-```
-<div class="container">
-
-
-    <div class="section-heading centered">
-
-        <div class="eyebrow">
-            OUR CAPABILITIES
-        </div>
-
-        <h2>
-            WHAT WE
-            <span>CAN DO.</span>
-        </h2>
-
-        <p>
-            Our service areas cover practical
-            solutions for homes, businesses and
-            organisations.
-        </p>
-
-    </div>
-
-
-    <!--
-        TEMPORARY SERVICE VISUALS
-
-        These are intentionally designed as
-        placeholders until real project photos
-        are available.
-    -->
-
-    <div class="work-grid">
-
-
-        <div class="work-card work-maintenance">
-
-            <div class="work-overlay">
-
-                <span>
-                    SERVICE AREA
-                </span>
+                </div>
 
                 <h3>
                     Maintenance
                 </h3>
 
                 <p>
-                    Practical property solutions
-                    and general maintenance support.
+
+                    General maintenance solutions
+                    for residential and business
+                    requirements.
+
                 </p>
 
-            </div>
+                <a href="#quote"
+                   class="service-link">
 
-        </div>
+                    Request Service
+                    <span>→</span>
+
+                </a>
+
+            </article>
 
 
-        <div class="work-card work-transport">
 
-            <div class="work-overlay">
+            <article class="service-card">
 
-                <span>
-                    SERVICE AREA
-                </span>
+                <div class="service-top">
+
+                    <span class="service-number">
+                        02
+                    </span>
+
+                    <span class="service-icon">
+                        🚚
+                    </span>
+
+                </div>
 
                 <h3>
-                    Transportation
+                    Transportation & Removals
                 </h3>
 
                 <p>
-                    Moving, removal and transportation
-                    solutions.
+
+                    Transportation and removal
+                    solutions for moving and
+                    logistical requirements.
+
                 </p>
 
-            </div>
+                <a href="#quote"
+                   class="service-link">
 
-        </div>
+                    Request Service
+                    <span>→</span>
+
+                </a>
+
+            </article>
 
 
-        <div class="work-card work-landscape">
 
-            <div class="work-overlay">
+            <article class="service-card">
 
-                <span>
-                    SERVICE AREA
-                </span>
+                <div class="service-top">
+
+                    <span class="service-number">
+                        03
+                    </span>
+
+                    <span class="service-icon">
+                        🔧
+                    </span>
+
+                </div>
 
                 <h3>
-                    Landscaping
+                    Plumbing
                 </h3>
 
                 <p>
-                    Outdoor spaces, landscaping and
-                    garden maintenance.
+
+                    Plumbing support for
+                    residential and commercial
+                    requirements.
+
                 </p>
 
-            </div>
+                <a href="#quote"
+                   class="service-link">
 
-        </div>
+                    Request Service
+                    <span>→</span>
+
+                </a>
+
+            </article>
 
 
-        <div class="work-card work-cleaning">
 
-            <div class="work-overlay">
+            <article class="service-card">
 
-                <span>
-                    SERVICE AREA
-                </span>
+                <div class="service-top">
+
+                    <span class="service-number">
+                        04
+                    </span>
+
+                    <span class="service-icon">
+                        ✦
+                    </span>
+
+                </div>
 
                 <h3>
                     Cleaning
                 </h3>
 
                 <p>
+
                     Residential and corporate
-                    cleaning solutions.
+                    cleaning solutions tailored
+                    to your environment.
+
                 </p>
 
-            </div>
+                <a href="#quote"
+                   class="service-link">
 
-        </div>
+                    Request Service
+                    <span>→</span>
 
+                </a>
 
-    </div>
+            </article>
 
 
-    <div class="work-note">
 
-        <i class="fa-solid fa-camera"></i>
+            <article class="service-card">
 
-        <div>
+                <div class="service-top">
 
-            <strong>
-                Our project gallery is coming soon.
-            </strong>
-
-            <p>
-                Real project photographs will be added
-                here as our portfolio grows.
-            </p>
-
-        </div>
-
-    </div>
-
-</div>
-```
-
-</section>
-
-<!-- =========================================
-     WHY CHOOSE US
-========================================= -->
-
-<section class="section">
-
-```
-<div class="container">
-
-
-    <div class="section-heading centered">
-
-        <div class="eyebrow">
-            WHY CREATIVE DEVELOPMENT GROUP
-        </div>
-
-        <h2>
-            BUILT AROUND
-            <span>YOUR NEEDS.</span>
-        </h2>
-
-    </div>
-
-
-    <div class="features">
-
-
-        <div class="feature">
-
-            <div class="feature-icon">
-                <i class="fa-solid fa-circle-check"></i>
-            </div>
-
-            <h3>
-                Reliable
-            </h3>
-
-            <p>
-                Dependable solutions focused
-                on getting the job done.
-            </p>
-
-        </div>
-
-
-        <div class="feature">
-
-            <div class="feature-icon">
-                <i class="fa-solid fa-award"></i>
-            </div>
-
-            <h3>
-                Professional
-            </h3>
-
-            <p>
-                A professional approach to
-                every client and project.
-            </p>
-
-        </div>
-
-
-        <div class="feature">
-
-            <div class="feature-icon">
-                <i class="fa-solid fa-layer-group"></i>
-            </div>
-
-            <h3>
-                Versatile
-            </h3>
-
-            <p>
-                Multiple services under one
-                trusted business.
-            </p>
-
-        </div>
-
-
-        <div class="feature">
-
-            <div class="feature-icon">
-                <i class="fa-solid fa-user-check"></i>
-            </div>
-
-            <h3>
-                Client Focused
-            </h3>
-
-            <p>
-                Solutions aligned with your
-                specific requirements.
-            </p>
-
-        </div>
-
-
-    </div>
-
-</div>
-```
-
-</section>
-
-<!-- =========================================
-     TESTIMONIALS
-========================================= -->
-
-<section class="section testimonials-section">
-
-```
-<div class="container">
-
-
-    <div class="testimonial-layout">
-
-
-        <div class="testimonial-content">
-
-            <div class="eyebrow">
-                CLIENT FEEDBACK
-            </div>
-
-            <h2>
-                YOUR EXPERIENCE
-                <span>MATTERS.</span>
-            </h2>
-
-            <p>
-                We value feedback from our clients.
-                If you've worked with Creative
-                Development Group, we'd appreciate
-                hearing about your experience.
-            </p>
-
-
-            <a href="https://wa.me/27722301683?text=Hello%20Creative%20Development%20Group.%20I%20would%20like%20to%20share%20a%20testimonial%20about%20my%20experience%20with%20your%20company."
-               target="_blank"
-               rel="noopener noreferrer"
-               class="btn btn-whatsapp">
-
-                <i class="fa-brands fa-whatsapp"></i>
-
-                WRITE A TESTIMONIAL
-
-            </a>
-
-        </div>
-
-
-        <div class="testimonial-card">
-
-            <i class="fa-solid fa-quote-left quote-icon"></i>
-
-            <h3>
-                We'd love to hear from you.
-            </h3>
-
-            <p>
-                Your feedback helps us understand
-                what we are doing well and where
-                we can continue to improve.
-            </p>
-
-            <div class="testimonial-stars">
-                ★ ★ ★ ★ ★
-            </div>
-
-            <span>
-                Share your experience with us on WhatsApp.
-            </span>
-
-        </div>
-
-    </div>
-
-</div>
-```
-
-</section>
-
-<!-- =========================================
-     QUOTATION CTA
-========================================= -->
-
-<section class="quote-section"
-         id="quote">
-
-```
-<div class="container">
-
-    <div class="quote-content">
-
-        <div class="eyebrow">
-            LET'S GET STARTED
-        </div>
-
-        <h2>
-            NEED A
-            <span>SOLUTION?</span>
-        </h2>
-
-        <p>
-            Tell us what you need and let Creative
-            Development Group help you find the
-            right solution.
-        </p>
-
-
-        <div class="quote-buttons">
-
-            <a href="#contact"
-               class="btn btn-light">
-
-                REQUEST A FREE QUOTATION
-
-            </a>
-
-
-            <a href="https://wa.me/27722301683"
-               target="_blank"
-               rel="noopener noreferrer"
-               class="btn btn-outline-light">
-
-                <i class="fa-brands fa-whatsapp"></i>
-                WHATSAPP US
-
-            </a>
-
-        </div>
-
-    </div>
-
-</div>
-```
-
-</section>
-
-<!-- =========================================
-     CONTACT
-========================================= -->
-
-<section class="section"
-         id="contact">
-
-```
-<div class="container">
-
-
-    <div class="section-heading centered">
-
-        <div class="eyebrow">
-            GET IN TOUCH
-        </div>
-
-        <h2>
-            LET'S WORK
-            <span>TOGETHER.</span>
-        </h2>
-
-        <p>
-            Contact us today for a quotation
-            or more information about our services.
-        </p>
-
-    </div>
-
-
-    <div class="contact-grid">
-
-
-        <!-- CONTACT DETAILS -->
-
-        <div class="contact-card">
-
-            <span class="contact-card-label">
-                CONTACT DETAILS
-            </span>
-
-            <h3>
-                We're ready to assist.
-            </h3>
-
-
-            <div class="contact-item">
-
-                <div class="contact-icon">
-                    <i class="fa-solid fa-phone"></i>
-                </div>
-
-                <div>
-
-                    <span>
-                        BUSINESS NUMBER
+                    <span class="service-number">
+                        05
                     </span>
 
-                    <a href="tel:0722301683">
-                        072 230 1683
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <div class="contact-item">
-
-                <div class="contact-icon whatsapp-icon">
-                    <i class="fa-brands fa-whatsapp"></i>
-                </div>
-
-                <div>
-
-                    <span>
-                        WHATSAPP
+                    <span class="service-icon">
+                        🌿
                     </span>
 
-                    <a href="https://wa.me/27722301683"
-                       target="_blank"
-                       rel="noopener noreferrer">
-
-                        072 230 1683
-
-                    </a>
-
                 </div>
 
-            </div>
+                <h3>
+                    Landscaping & Garden Maintenance
+                </h3>
+
+                <p>
+
+                    Practical outdoor maintenance
+                    and landscaping solutions.
+
+                </p>
+
+                <a href="#quote"
+                   class="service-link">
+
+                    Request Service
+                    <span>→</span>
+
+                </a>
+
+            </article>
 
 
-            <div class="contact-item">
 
-                <div class="contact-icon">
-                    <i class="fa-solid fa-location-dot"></i>
-                </div>
+            <article class="service-card">
 
-                <div>
+                <div class="service-top">
 
-                    <span>
-                        LOCATION
+                    <span class="service-number">
+                        06
                     </span>
 
-                    <strong>
-                        CAPE TOWN, SOUTH AFRICA
-                    </strong>
+                    <span class="service-icon">
+                        📦
+                    </span>
 
                 </div>
+
+                <h3>
+                    Supply
+                </h3>
+
+                <p>
+
+                    Supply solutions supporting
+                    private and public-sector
+                    requirements.
+
+                </p>
+
+                <a href="#quote"
+                   class="service-link">
+
+                    Request Service
+                    <span>→</span>
+
+                </a>
+
+            </article>
+
+
+
+            <article class="service-card">
+
+                <div class="service-top">
+
+                    <span class="service-number">
+                        07
+                    </span>
+
+                    <span class="service-icon">
+                        ◇
+                    </span>
+
+                </div>
+
+                <h3>
+                    Marketing
+                </h3>
+
+                <p>
+
+                    Marketing solutions designed
+                    to help businesses improve
+                    their visibility and reach.
+
+                </p>
+
+                <a href="#quote"
+                   class="service-link">
+
+                    Request Service
+                    <span>→</span>
+
+                </a>
+
+            </article>
+
+
+
+            <article class="service-card service-card-special">
+
+                <div class="service-top">
+
+                    <span class="service-number">
+                        08
+                    </span>
+
+                    <span class="service-icon">
+                        +
+                    </span>
+
+                </div>
+
+                <h3>
+                    Need Something Else?
+                </h3>
+
+                <p>
+
+                    Contact us to discuss your
+                    specific requirement and
+                    find the right solution.
+
+                </p>
+
+                <a href="#contact"
+                   class="service-link">
+
+                    Contact Us
+                    <span>→</span>
+
+                </a>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CAPABILITIES
+===================================================== -->
+
+<section class="section capabilities-section"
+         id="capabilities">
+
+    <div class="container">
+
+
+        <div class="capabilities-header">
+
+            <div>
+
+                <span class="section-label light-label">
+                    OUR CAPABILITIES
+                </span>
+
+                <h2>
+                    MORE THAN A
+                    <span>SINGLE SERVICE.</span>
+                </h2>
 
             </div>
 
 
-            <div class="contact-business-note">
+            <p>
 
-                <i class="fa-solid fa-calendar-check"></i>
+                Until our project portfolio is expanded,
+                this section highlights the areas in which
+                Creative Development Group can assist.
 
-                <div>
+            </p>
 
-                    <strong>
-                        Established in 2018
-                    </strong>
+        </div>
+
+
+        <div class="capability-grid">
+
+
+            <div class="capability capability-large">
+
+                <div class="capability-number">
+                    01
+                </div>
+
+                <div class="capability-content">
+
+                    <span>
+                        PROPERTY & FACILITIES
+                    </span>
+
+                    <h3>
+                        Maintenance & Plumbing
+                    </h3>
 
                     <p>
-                        Proudly serving clients in
-                        Cape Town and surrounding areas.
+
+                        Practical support for keeping
+                        properties functional, maintained
+                        and presentable.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="capability">
+
+                <div class="capability-number">
+                    02
+                </div>
+
+                <div class="capability-content">
+
+                    <span>
+                        LOGISTICS
+                    </span>
+
+                    <h3>
+                        Transportation & Removals
+                    </h3>
+
+                    <p>
+
+                        Support for transportation,
+                        moving and removal requirements.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="capability">
+
+                <div class="capability-number">
+                    03
+                </div>
+
+                <div class="capability-content">
+
+                    <span>
+                        ENVIRONMENT
+                    </span>
+
+                    <h3>
+                        Cleaning & Landscaping
+                    </h3>
+
+                    <p>
+
+                        Solutions for clean,
+                        functional and presentable
+                        environments.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="capability">
+
+                <div class="capability-number">
+                    04
+                </div>
+
+                <div class="capability-content">
+
+                    <span>
+                        BUSINESS SUPPORT
+                    </span>
+
+                    <h3>
+                        Supply & Marketing
+                    </h3>
+
+                    <p>
+
+                        Supporting businesses and
+                        organisations with supply and
+                        marketing requirements.
+
                     </p>
 
                 </div>
@@ -1282,300 +1042,726 @@
 
         </div>
 
+    </div>
+
+</section>
 
 
-        <!-- CONTACT FORM -->
 
-        <form class="contact-form"
-              id="contactForm">
+<!-- =====================================================
+     WHY US
+===================================================== -->
 
+<section class="section why-section">
 
-            <div class="form-row">
-
-                <label>
-
-                    Your Name
-
-                    <input
-                        type="text"
-                        id="name"
-                        placeholder="Your full name"
-                        required>
-
-                </label>
+    <div class="container">
 
 
-                <label>
+        <div class="section-heading centered">
 
-                    Contact Number
+            <span class="section-label">
+                WHY WORK WITH US
+            </span>
 
-                    <input
-                        type="tel"
-                        id="phone"
-                        placeholder="Your contact number"
-                        required>
+            <h2>
+                BUILT AROUND
+                <span>YOUR REQUIREMENTS.</span>
+            </h2>
 
-                </label>
+        </div>
+
+
+        <div class="why-grid">
+
+
+            <div class="why-item">
+
+                <div class="why-icon">
+                    01
+                </div>
+
+                <h3>
+                    One Business
+                </h3>
+
+                <p>
+
+                    Access a range of practical
+                    services through one business.
+
+                </p>
 
             </div>
 
 
-            <label>
 
-                Service Required
+            <div class="why-item">
 
-                <select id="service"
-                        required>
+                <div class="why-icon">
+                    02
+                </div>
 
-                    <option value="">
-                        Select a service
-                    </option>
+                <h3>
+                    Professional Approach
+                </h3>
 
-                    <option value="Maintenance">
-                        Maintenance
-                    </option>
+                <p>
 
-                    <option value="Transportation & Removals">
-                        Transportation & Removals
-                    </option>
+                    We aim to approach every
+                    requirement with professionalism.
 
-                    <option value="Plumbing">
-                        Plumbing
-                    </option>
+                </p>
 
-                    <option value="Residential & Corporate Cleaning">
-                        Residential & Corporate Cleaning
-                    </option>
-
-                    <option value="Landscaping & Garden Maintenance">
-                        Landscaping & Garden Maintenance
-                    </option>
-
-                    <option value="Supply">
-                        Supply — Private & Public Sector
-                    </option>
-
-                    <option value="Marketing">
-                        Marketing
-                    </option>
-
-                    <option value="Other">
-                        Other
-                    </option>
-
-                </select>
-
-            </label>
+            </div>
 
 
-            <label>
 
-                Message
+            <div class="why-item">
 
-                <textarea
-                    id="message"
-                    rows="6"
-                    placeholder="Tell us what you need help with..."
-                    required></textarea>
+                <div class="why-icon">
+                    03
+                </div>
 
-            </label>
+                <h3>
+                    Flexible Solutions
+                </h3>
 
+                <p>
 
-            <button type="submit"
-                    class="btn btn-primary">
+                    Solutions can be tailored
+                    around your specific needs.
 
-                <i class="fa-brands fa-whatsapp"></i>
+                </p>
 
-                SEND ENQUIRY VIA WHATSAPP
-
-            </button>
+            </div>
 
 
-            <small class="form-note">
 
-                <i class="fa-solid fa-lock"></i>
+            <div class="why-item">
 
-                Your enquiry will open directly in WhatsApp.
+                <div class="why-icon">
+                    04
+                </div>
 
-            </small>
+                <h3>
+                    Direct Communication
+                </h3>
 
-        </form>
+                <p>
+
+                    Contact our team directly to
+                    discuss your requirements.
+
+                </p>
+
+            </div>
+
+        </div>
 
     </div>
 
-</div>
-```
+</section>
+
+
+
+<!-- =====================================================
+     TESTIMONIALS
+===================================================== -->
+
+<section class="section testimonials-section"
+         id="testimonials">
+
+    <div class="container">
+
+
+        <div class="testimonial-layout">
+
+
+            <div class="testimonial-intro">
+
+                <span class="section-label">
+                    CLIENT FEEDBACK
+                </span>
+
+                <h2>
+                    YOUR EXPERIENCE
+                    <span>MATTERS.</span>
+                </h2>
+
+                <p>
+
+                    We are building our client feedback
+                    portfolio and would appreciate hearing
+                    about your experience with Creative
+                    Development Group.
+
+                </p>
+
+
+                <a href="https://wa.me/27722301683?text=Hello%20Creative%20Development%20Group%2C%20I%20would%20like%20to%20share%20a%20testimonial%20about%20your%20service."
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="btn btn-primary">
+
+                    Share Your Experience
+
+                </a>
+
+            </div>
+
+
+            <div class="testimonial-card">
+
+                <div class="quote-mark">
+                    “
+                </div>
+
+                <p>
+
+                    Have we worked with you?
+
+                    We would love to hear your
+                    feedback. Your experience can
+                    help us continue improving our
+                    service.
+
+                </p>
+
+                <div class="testimonial-bottom">
+
+                    <div>
+
+                        <strong>
+                            Client Feedback
+                        </strong>
+
+                        <span>
+                            Submitted via WhatsApp
+                        </span>
+
+                    </div>
+
+                    <span class="testimonial-stars">
+                        ★★★★★
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
 
-<!-- =========================================
-     LOCATION
-========================================= -->
 
-<section class="location-section">
 
-```
-<div class="container">
+<!-- =====================================================
+     QUOTATION CTA
+===================================================== -->
 
-    <div class="location-content">
+<section class="quote-section"
+         id="quote">
 
-        <i class="fa-solid fa-location-dot"></i>
+    <div class="container quote-content">
+
 
         <div>
 
-            <span>
-                OUR LOCATION
+            <span class="section-label light-label">
+                LET'S GET STARTED
             </span>
 
             <h2>
-                CAPE TOWN,
-                <strong>SOUTH AFRICA.</strong>
+                HAVE A PROJECT
+                <span>IN MIND?</span>
             </h2>
 
             <p>
-                Proudly serving clients in Cape Town
-                and surrounding areas.
-            </p>
 
-        </div>
+                Tell us what you need and contact
+                Creative Development Group for
+                a quotation.
 
-    </div>
-
-</div>
-```
-
-</section>
-
-</main>
-
-<!-- =========================================
-     FOOTER
-========================================= -->
-
-<footer>
-
-```
-<div class="container">
-
-
-    <div class="footer-main">
-
-
-        <div class="footer-brand">
-
-            <h3>
-                Creative Development Group
-            </h3>
-
-            <p>
-                General Trading & Consulting Solutions
-            </p>
-
-            <p>
-                Founded in 2018.
-            </p>
-
-            <p class="footer-tagline">
-                Here to better your future.
             </p>
 
         </div>
 
 
-        <div class="footer-column">
-
-            <h4>
-                COMPANY
-            </h4>
-
-            <a href="#about">About Us</a>
-            <a href="#services">Services</a>
-            <a href="#work">Our Work</a>
-            <a href="#contact">Contact</a>
-
-        </div>
-
-
-        <div class="footer-column">
-
-            <h4>
-                SERVICES
-            </h4>
-
-            <a href="#services">Maintenance</a>
-            <a href="#services">Plumbing</a>
-            <a href="#services">Cleaning</a>
-            <a href="#services">Landscaping</a>
-
-        </div>
-
-
-        <div class="footer-column">
-
-            <h4>
-                CONTACT
-            </h4>
-
-            <a href="tel:0722301683">
-                072 230 1683
-            </a>
+        <div class="quote-actions">
 
             <a href="https://wa.me/27722301683"
                target="_blank"
-               rel="noopener noreferrer">
+               rel="noopener noreferrer"
+               class="btn btn-red">
 
                 WhatsApp Us
 
             </a>
 
-            <span>
-                Cape Town, South Africa
+
+            <a href="tel:0722301683"
+               class="btn btn-white-outline">
+
+                Call 072 230 1683
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CONTACT
+===================================================== -->
+
+<section class="section contact-section"
+         id="contact">
+
+    <div class="container">
+
+
+        <div class="section-heading">
+
+            <span class="section-label">
+                CONTACT US
             </span>
+
+            <h2>
+                LET'S WORK
+                <span>TOGETHER.</span>
+            </h2>
+
+            <p>
+
+                Tell us what you need and our team
+                can assist with your enquiry.
+
+            </p>
 
         </div>
 
 
+        <div class="contact-grid">
+
+
+            <!-- Contact Details -->
+
+            <div class="contact-details">
+
+
+                <div class="contact-detail">
+
+                    <div class="contact-detail-icon">
+                        ☎
+                    </div>
+
+                    <div>
+
+                        <span>
+                            PHONE
+                        </span>
+
+                        <a href="tel:0722301683">
+                            072 230 1683
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="contact-detail">
+
+                    <div class="contact-detail-icon">
+                        WA
+                    </div>
+
+                    <div>
+
+                        <span>
+                            WHATSAPP
+                        </span>
+
+                        <a href="https://wa.me/27722301683"
+                           target="_blank"
+                           rel="noopener noreferrer">
+
+                            072 230 1683
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="contact-detail">
+
+                    <div class="contact-detail-icon">
+                        📍
+                    </div>
+
+                    <div>
+
+                        <span>
+                            LOCATION
+                        </span>
+
+                        <strong>
+                            Cape Town, South Africa
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="contact-business-box">
+
+                    <span>
+                        CREATIVE DEVELOPMENT GROUP
+                    </span>
+
+                    <strong>
+                        General Trading &
+                        Consulting Solutions
+                    </strong>
+
+                    <small>
+                        Here to better your future.
+                    </small>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Contact Form -->
+
+            <form class="contact-form"
+                  id="contactForm">
+
+
+                <div class="form-row">
+
+                    <label>
+
+                        Your Name
+
+                        <input
+                            type="text"
+                            id="name"
+                            placeholder="Your name"
+                            required>
+
+                    </label>
+
+
+                    <label>
+
+                        Contact Number
+
+                        <input
+                            type="tel"
+                            id="phone"
+                            placeholder="Your contact number"
+                            required>
+
+                    </label>
+
+                </div>
+
+
+                <label>
+
+                    Service Required
+
+                    <select id="service"
+                            required>
+
+                        <option value="">
+                            Select a service
+                        </option>
+
+                        <option value="Maintenance">
+                            Maintenance
+                        </option>
+
+                        <option value="Transportation & Removals">
+                            Transportation & Removals
+                        </option>
+
+                        <option value="Plumbing">
+                            Plumbing
+                        </option>
+
+                        <option value="Residential & Corporate Cleaning">
+                            Residential & Corporate Cleaning
+                        </option>
+
+                        <option value="Landscaping & Garden Maintenance">
+                            Landscaping & Garden Maintenance
+                        </option>
+
+                        <option value="Supply">
+                            Supply
+                        </option>
+
+                        <option value="Marketing">
+                            Marketing
+                        </option>
+
+                        <option value="Other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </label>
+
+
+                <label>
+
+                    Your Message
+
+                    <textarea
+                        id="message"
+                        rows="6"
+                        placeholder="Tell us about your requirements..."
+                        required></textarea>
+
+                </label>
+
+
+                <button
+                    type="submit"
+                    class="btn btn-primary">
+
+                    Send Enquiry via WhatsApp
+
+                </button>
+
+
+                <p class="form-note">
+
+                    Your enquiry will open in WhatsApp
+                    so you can send it directly to our team.
+
+                </p>
+
+            </form>
+
+        </div>
+
     </div>
 
+</section>
 
-    <div class="footer-bottom">
 
-        <span>
-            © <span id="year"></span>
-            Creative Development Group.
-            All Rights Reserved.
-        </span>
 
-        <span>
-            Founded in 2018
-        </span>
+<!-- =====================================================
+     LOCATION
+===================================================== -->
+
+<section class="location-section">
+
+    <div class="container">
+
+        <div class="location-inner">
+
+            <div>
+
+                <span>
+                    SERVING CLIENTS IN
+                </span>
+
+                <h2>
+                    CAPE TOWN,
+                    <strong>SOUTH AFRICA.</strong>
+                </h2>
+
+            </div>
+
+
+            <a href="https://wa.me/27722301683"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="btn btn-white-outline">
+
+                Contact Us
+
+            </a>
+
+        </div>
 
     </div>
 
-</div>
-```
+</section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer">
+
+    <div class="container">
+
+
+        <div class="footer-main">
+
+
+            <div class="footer-brand">
+
+                <img
+                    src="CDG.jpg"
+                    alt="Creative Development Group"
+                    class="footer-logo">
+
+
+                <p>
+
+                    General Trading &
+                    Consulting Solutions.
+
+                </p>
+
+                <span>
+                    Here to better your future.
+                </span>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>
+                    COMPANY
+                </h4>
+
+                <a href="#about">
+                    About Us
+                </a>
+
+                <a href="#services">
+                    Services
+                </a>
+
+                <a href="#capabilities">
+                    Capabilities
+                </a>
+
+                <a href="#testimonials">
+                    Testimonials
+                </a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>
+                    SERVICES
+                </h4>
+
+                <a href="#services">
+                    Maintenance
+                </a>
+
+                <a href="#services">
+                    Plumbing
+                </a>
+
+                <a href="#services">
+                    Transportation
+                </a>
+
+                <a href="#services">
+                    Cleaning
+                </a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>
+                    CONTACT
+                </h4>
+
+                <a href="tel:0722301683">
+                    072 230 1683
+                </a>
+
+                <a href="https://wa.me/27722301683"
+                   target="_blank"
+                   rel="noopener noreferrer">
+
+                    WhatsApp
+
+                </a>
+
+                <span>
+                    Cape Town, South Africa
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <span>
+
+                © <span id="year"></span>
+                Creative Development Group.
+                All rights reserved.
+
+            </span>
+
+
+            <span>
+                Established 2018
+            </span>
+
+
+            <span>
+                Cape Town • South Africa
+            </span>
+
+        </div>
+
+    </div>
 
 </footer>
 
-<!-- =========================================
-     FLOATING WHATSAPP
-========================================= -->
 
-<a href="https://wa.me/27722301683"
-target="_blank"
-rel="noopener noreferrer"
-class="floating-whatsapp"
-aria-label="Contact Creative Development Group on WhatsApp">
 
-```
-<i class="fa-brands fa-whatsapp"></i>
+<!-- Back To Top -->
 
-<span>
-    WhatsApp Us
-</span>
-```
+<button class="back-to-top"
+        id="backToTop"
+        aria-label="Back to top">
 
-</a>
+    ↑
+
+</button>
+
 
 <!-- JavaScript -->
 
