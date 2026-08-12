@@ -3,396 +3,385 @@
    WEBSITE JAVASCRIPT
 ========================================================= */
 
+document.addEventListener("DOMContentLoaded", () => {
 
-document.addEventListener(
-    "DOMContentLoaded",
-    function () {
+    /* =====================================================
+       ELEMENTS
+    ===================================================== */
+
+    const menuToggle = document.getElementById("menuToggle");
+    const nav = document.getElementById("nav");
+    const siteHeader = document.getElementById("siteHeader");
+    const backToTop = document.getElementById("backToTop");
+    const contactForm = document.getElementById("contactForm");
+    const yearElement = document.getElementById("year");
+
+    const navLinks = nav
+        ? nav.querySelectorAll("a")
+        : [];
 
 
-        /* =====================================================
-           ELEMENTS
-        ====================================================== */
+    /* =====================================================
+       CURRENT YEAR
+    ===================================================== */
 
-        const header =
-            document.getElementById(
-                "siteHeader"
+    if (yearElement) {
+        yearElement.textContent = new Date().getFullYear();
+    }
+
+
+    /* =====================================================
+       MOBILE NAVIGATION
+    ===================================================== */
+
+    if (menuToggle && nav) {
+
+        menuToggle.addEventListener("click", () => {
+
+            const isOpen = nav.classList.toggle("active");
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                isOpen ? "true" : "false"
             );
 
-
-        const menuToggle =
-            document.getElementById(
-                "menuToggle"
+            menuToggle.setAttribute(
+                "aria-label",
+                isOpen
+                    ? "Close navigation"
+                    : "Open navigation"
             );
 
-
-        const nav =
-            document.getElementById(
-                "nav"
+            document.body.classList.toggle(
+                "menu-open",
+                isOpen
             );
 
-
-        const backToTop =
-            document.getElementById(
-                "backToTop"
-            );
+        });
 
 
-        const contactForm =
-            document.getElementById(
-                "contactForm"
-            );
+        /* Close menu after clicking link */
 
+        navLinks.forEach((link) => {
 
-        const serviceSelect =
-            document.getElementById(
-                "service"
-            );
+            link.addEventListener("click", () => {
 
+                nav.classList.remove("active");
 
-        const yearElement =
-            document.getElementById(
-                "year"
-            );
-
-
-        /* =====================================================
-           CURRENT YEAR
-        ====================================================== */
-
-        if (yearElement) {
-
-            yearElement.textContent =
-                new Date().getFullYear();
-
-        }
-
-
-        /* =====================================================
-           MOBILE MENU
-        ====================================================== */
-
-        if (
-            menuToggle &&
-            nav
-        ) {
-
-
-            menuToggle.addEventListener(
-                "click",
-                function () {
-
-
-                    const isOpen =
-                        nav.classList.toggle(
-                            "active"
-                        );
-
-
-                    menuToggle.classList.toggle(
-                        "active",
-                        isOpen
-                    );
-
-
-                    menuToggle.setAttribute(
-                        "aria-expanded",
-                        isOpen
-                            ? "true"
-                            : "false"
-                    );
-
-
-                    menuToggle.setAttribute(
-                        "aria-label",
-                        isOpen
-                            ? "Close navigation menu"
-                            : "Open navigation menu"
-                    );
-
-
-                }
-            );
-
-
-            /* CLOSE MENU AFTER LINK CLICK */
-
-            nav.querySelectorAll("a")
-                .forEach(
-                    function (link) {
-
-
-                        link.addEventListener(
-                            "click",
-                            function () {
-
-
-                                nav.classList.remove(
-                                    "active"
-                                );
-
-
-                                menuToggle
-                                    .classList
-                                    .remove(
-                                        "active"
-                                    );
-
-
-                                menuToggle.setAttribute(
-                                    "aria-expanded",
-                                    "false"
-                                );
-
-
-                            }
-                        );
-
-
-                    }
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    "false"
                 );
 
-
-            /* RESET MENU WHEN RETURNING TO PC */
-
-            window.addEventListener(
-                "resize",
-                function () {
-
-
-                    if (
-                        window.innerWidth >
-                        850
-                    ) {
-
-
-                        nav.classList.remove(
-                            "active"
-                        );
-
-
-                        menuToggle
-                            .classList
-                            .remove(
-                                "active"
-                            );
-
-
-                        menuToggle.setAttribute(
-                            "aria-expanded",
-                            "false"
-                        );
-
-
-                    }
-
-
-                }
-            );
-
-
-        }
-
-
-        /* =====================================================
-           HEADER SCROLL EFFECT
-        ====================================================== */
-
-        function handleScroll() {
-
-
-            if (header) {
-
-
-                header.classList.toggle(
-                    "scrolled",
-                    window.scrollY > 20
+                menuToggle.setAttribute(
+                    "aria-label",
+                    "Open navigation"
                 );
 
+                document.body.classList.remove(
+                    "menu-open"
+                );
+
+            });
+
+        });
+
+
+        /* Close menu when clicking outside */
+
+        document.addEventListener("click", (event) => {
+
+            const clickedInsideNav =
+                nav.contains(event.target);
+
+            const clickedToggle =
+                menuToggle.contains(event.target);
+
+            if (
+                nav.classList.contains("active") &&
+                !clickedInsideNav &&
+                !clickedToggle
+            ) {
+
+                closeMobileMenu();
 
             }
 
+        });
 
-            if (backToTop) {
 
+        /* Close menu using Escape key */
 
-                backToTop.classList.toggle(
-                    "show",
-                    window.scrollY > 600
-                );
+        document.addEventListener("keydown", (event) => {
 
+            if (
+                event.key === "Escape" &&
+                nav.classList.contains("active")
+            ) {
+
+                closeMobileMenu();
+
+                menuToggle.focus();
 
             }
 
+        });
 
+
+        /* Reset menu when resizing to desktop */
+
+        window.addEventListener("resize", () => {
+
+            if (window.innerWidth > 900) {
+
+                closeMobileMenu();
+
+            }
+
+        });
+
+    }
+
+
+    function closeMobileMenu() {
+
+        if (!nav || !menuToggle) {
+            return;
         }
 
+        nav.classList.remove("active");
 
-        window.addEventListener(
-            "scroll",
-            handleScroll,
-            {
-                passive: true
-            }
+        menuToggle.setAttribute(
+            "aria-expanded",
+            "false"
         );
 
+        menuToggle.setAttribute(
+            "aria-label",
+            "Open navigation"
+        );
 
-        handleScroll();
+        document.body.classList.remove(
+            "menu-open"
+        );
 
-
-        /* =====================================================
-           BACK TO TOP
-        ====================================================== */
-
-        if (backToTop) {
-
-
-            backToTop.addEventListener(
-                "click",
-                function () {
+    }
 
 
-                    window.scrollTo({
+    /* =====================================================
+       HEADER SCROLL EFFECT
+    ===================================================== */
 
-                        top: 0,
+    function updateHeader() {
 
-                        behavior: "smooth"
+        if (!siteHeader) {
+            return;
+        }
 
-                    });
+        if (window.scrollY > 30) {
 
+            siteHeader.classList.add("scrolled");
 
-                }
-            );
+        } else {
 
+            siteHeader.classList.remove("scrolled");
 
         }
 
+    }
 
-        /* =====================================================
-           SERVICE SELECTION
-        ====================================================== */
+    updateHeader();
 
-        const serviceLinks =
-            document.querySelectorAll(
-                "[data-service]"
-            );
-
-
-        serviceLinks.forEach(
-            function (link) {
+    window.addEventListener(
+        "scroll",
+        updateHeader,
+        { passive: true }
+    );
 
 
-                link.addEventListener(
-                    "click",
-                    function () {
+    /* =====================================================
+       BACK TO TOP BUTTON
+    ===================================================== */
+
+    function updateBackToTop() {
+
+        if (!backToTop) {
+            return;
+        }
+
+        if (window.scrollY > 500) {
+
+            backToTop.classList.add("show");
+
+        } else {
+
+            backToTop.classList.remove("show");
+
+        }
+
+    }
+
+    updateBackToTop();
+
+    window.addEventListener(
+        "scroll",
+        updateBackToTop,
+        { passive: true }
+    );
 
 
-                        const selectedService =
-                            link.getAttribute(
-                                "data-service"
-                            );
+    if (backToTop) {
+
+        backToTop.addEventListener("click", () => {
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        });
+
+    }
 
 
-                        if (
-                            selectedService &&
-                            serviceSelect
-                        ) {
+    /* =====================================================
+       SMOOTH INTERNAL LINKS
+    ===================================================== */
 
+    const internalLinks =
+        document.querySelectorAll('a[href^="#"]');
 
-                            serviceSelect.value =
-                                selectedService;
+    internalLinks.forEach((link) => {
 
+        link.addEventListener("click", (event) => {
 
-                        }
+            const targetId =
+                link.getAttribute("href");
 
-
-                    }
-                );
-
-
+            if (
+                !targetId ||
+                targetId === "#"
+            ) {
+                return;
             }
-        );
+
+            const target =
+                document.querySelector(targetId);
+
+            if (!target) {
+                return;
+            }
+
+            event.preventDefault();
 
 
-        /* =====================================================
-           CONTACT FORM TO WHATSAPP
-        ====================================================== */
+            const headerHeight =
+                siteHeader
+                    ? siteHeader.offsetHeight
+                    : 0;
 
-        if (contactForm) {
-
-
-            contactForm.addEventListener(
-                "submit",
-                function (event) {
-
-
-                    event.preventDefault();
+            const targetPosition =
+                target.getBoundingClientRect().top +
+                window.scrollY -
+                headerHeight -
+                15;
 
 
-                    const name =
-                        document
-                            .getElementById(
-                                "name"
-                            )
-                            .value
-                            .trim();
+            window.scrollTo({
+                top: targetPosition,
+                behavior: "smooth"
+            });
+
+        });
+
+    });
 
 
-                    const phone =
-                        document
-                            .getElementById(
-                                "phone"
-                            )
-                            .value
-                            .trim();
+    /* =====================================================
+       CONTACT FORM TO WHATSAPP
+    ===================================================== */
+
+    if (contactForm) {
+
+        contactForm.addEventListener(
+            "submit",
+            (event) => {
+
+                event.preventDefault();
 
 
-                    const service =
-                        document
-                            .getElementById(
-                                "service"
-                            )
-                            .value;
+                const nameInput =
+                    document.getElementById("name");
+
+                const phoneInput =
+                    document.getElementById("phone");
+
+                const serviceInput =
+                    document.getElementById("service");
+
+                const messageInput =
+                    document.getElementById("message");
 
 
-                    const message =
-                        document
-                            .getElementById(
-                                "message"
-                            )
-                            .value
-                            .trim();
+                const name =
+                    nameInput
+                        ? nameInput.value.trim()
+                        : "";
+
+                const phone =
+                    phoneInput
+                        ? phoneInput.value.trim()
+                        : "";
+
+                const service =
+                    serviceInput
+                        ? serviceInput.value.trim()
+                        : "";
+
+                const message =
+                    messageInput
+                        ? messageInput.value.trim()
+                        : "";
 
 
-                    /* VALIDATION */
+                /* Basic validation */
 
-                    if (
-                        !name ||
-                        !phone ||
-                        !service ||
-                        !message
-                    ) {
+                if (
+                    !name ||
+                    !phone ||
+                    !service ||
+                    !message
+                ) {
 
+                    alert(
+                        "Please complete all fields before submitting your enquiry."
+                    );
 
-                        alert(
-                            "Please complete all fields before sending your enquiry."
-                        );
+                    return;
 
-
-                        return;
-
-
-                    }
+                }
 
 
-                    /* BUSINESS NUMBER */
+                /* Clean phone number */
 
-                    const businessNumber =
-                        "27722301683";
+                const cleanedPhone =
+                    phone.replace(/[^\d+]/g, "");
 
 
-                    /* MESSAGE */
+                if (cleanedPhone.length < 9) {
 
-                    const whatsappMessage =
+                    alert(
+                        "Please enter a valid contact number."
+                    );
+
+                    return;
+
+                }
+
+
+                /* Build WhatsApp message */
+
+                const whatsappMessage =
 `Hello Creative Development Group,
 
 I would like to request a quotation.
@@ -401,166 +390,245 @@ Name: ${name}
 Contact Number: ${phone}
 Service Required: ${service}
 
-Requirements:
+Project / Service Details:
 ${message}
+
+Please contact me regarding this enquiry.
 
 Thank you.`;
 
 
-                    /* WHATSAPP LINK */
-
-                    const whatsappURL =
-                        "https://wa.me/" +
-                        businessNumber +
-                        "?text=" +
-                        encodeURIComponent(
-                            whatsappMessage
-                        );
-
-
-                    /* OPEN WHATSAPP */
-
-                    window.open(
-                        whatsappURL,
-                        "_blank",
-                        "noopener,noreferrer"
+                const encodedMessage =
+                    encodeURIComponent(
+                        whatsappMessage
                     );
 
 
-                }
-            );
+                const whatsappNumber =
+                    "27722301683";
 
 
+                const whatsappURL =
+                    `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+
+
+                window.open(
+                    whatsappURL,
+                    "_blank",
+                    "noopener,noreferrer"
+                );
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       ACTIVE NAVIGATION LINK
+    ===================================================== */
+
+    const sections =
+        document.querySelectorAll(
+            "main section[id]"
+        );
+
+
+    function updateActiveNavigation() {
+
+        if (
+            !sections.length ||
+            !navLinks.length
+        ) {
+            return;
         }
 
 
-        /* =====================================================
-           SMOOTH INTERNAL LINKS
-        ====================================================== */
+        const scrollPosition =
+            window.scrollY + 180;
 
-        const internalLinks =
-            document.querySelectorAll(
-                'a[href^="#"]'
+        let currentSection = "";
+
+
+        sections.forEach((section) => {
+
+            const sectionTop =
+                section.offsetTop;
+
+            const sectionHeight =
+                section.offsetHeight;
+
+
+            if (
+                scrollPosition >= sectionTop &&
+                scrollPosition <
+                    sectionTop + sectionHeight
+            ) {
+
+                currentSection =
+                    section.getAttribute("id");
+
+            }
+
+        });
+
+
+        navLinks.forEach((link) => {
+
+            const href =
+                link.getAttribute("href");
+
+            link.classList.remove("active-link");
+
+
+            if (
+                currentSection &&
+                href === `#${currentSection}`
+            ) {
+
+                link.classList.add(
+                    "active-link"
+                );
+
+            }
+
+        });
+
+    }
+
+
+    updateActiveNavigation();
+
+    window.addEventListener(
+        "scroll",
+        updateActiveNavigation,
+        { passive: true }
+    );
+
+
+    /* =====================================================
+       REVEAL SECTIONS WHILE SCROLLING
+    ===================================================== */
+
+    const revealElements =
+        document.querySelectorAll(
+            ".service-card, " +
+            ".why-item, " +
+            ".client-card, " +
+            ".about-panel, " +
+            ".contact-detail, " +
+            ".contact-form"
+        );
+
+
+    if (
+        "IntersectionObserver" in window
+    ) {
+
+        const revealObserver =
+            new IntersectionObserver(
+
+                (entries, observer) => {
+
+                    entries.forEach((entry) => {
+
+                        if (
+                            entry.isIntersecting
+                        ) {
+
+                            entry.target.classList.add(
+                                "visible"
+                            );
+
+                            observer.unobserve(
+                                entry.target
+                            );
+
+                        }
+
+                    });
+
+                },
+
+                {
+                    threshold: 0.12
+                }
+
             );
 
 
-        internalLinks.forEach(
-            function (link) {
+        revealElements.forEach(
+            (element) => {
 
-
-                link.addEventListener(
-                    "click",
-                    function (event) {
-
-
-                        const targetID =
-                            link.getAttribute(
-                                "href"
-                            );
-
-
-                        if (
-                            !targetID ||
-                            targetID === "#"
-                        ) {
-
-                            return;
-
-                        }
-
-
-                        const targetElement =
-                            document.querySelector(
-                                targetID
-                            );
-
-
-                        if (!targetElement) {
-
-                            return;
-
-                        }
-
-
-                        event.preventDefault();
-
-
-                        const headerHeight =
-                            header
-                                ? header.offsetHeight
-                                : 0;
-
-
-                        const targetPosition =
-                            targetElement
-                                .getBoundingClientRect()
-                                .top
-                            +
-                            window.pageYOffset
-                            -
-                            headerHeight
-                            -
-                            8;
-
-
-                        window.scrollTo({
-
-                            top: targetPosition,
-
-                            behavior: "smooth"
-
-                        });
-
-
-                    }
+                element.classList.add(
+                    "reveal"
                 );
 
+                revealObserver.observe(
+                    element
+                );
 
             }
         );
 
+    }
 
-        /* =====================================================
-           ESCAPE CLOSES MOBILE MENU
-        ====================================================== */
 
-        document.addEventListener(
-            "keydown",
-            function (event) {
+    /* =====================================================
+       PREVENT EMPTY IMAGE ERROR DISPLAY
+    ===================================================== */
+
+    const images =
+        document.querySelectorAll(
+            ".service-image img"
+        );
+
+
+    images.forEach((image) => {
+
+        image.addEventListener(
+            "error",
+            () => {
+
+                const imageContainer =
+                    image.closest(
+                        ".service-image"
+                    );
+
+                image.style.display =
+                    "none";
 
 
                 if (
-                    event.key ===
-                    "Escape" &&
-                    nav &&
-                    menuToggle
+                    imageContainer &&
+                    !imageContainer.querySelector(
+                        ".image-placeholder"
+                    )
                 ) {
 
-
-                    nav.classList.remove(
-                        "active"
-                    );
-
-
-                    menuToggle
-                        .classList
-                        .remove(
-                            "active"
+                    const placeholder =
+                        document.createElement(
+                            "div"
                         );
 
 
-                    menuToggle.setAttribute(
-                        "aria-expanded",
-                        "false"
+                    placeholder.className =
+                        "image-placeholder";
+
+
+                    placeholder.textContent =
+                        "Creative Development Group";
+
+
+                    imageContainer.appendChild(
+                        placeholder
                     );
 
-
                 }
-
 
             }
         );
 
+    });
 
-    }
-);
+});
